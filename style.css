@@ -1,0 +1,191 @@
+/*
+Theme Name: Two Dice Six
+Theme URI: http://wordpress.org/themes/two-dice-six
+Author: 2d6
+Author URI: http://www.spillklubben2d6.no
+Description: 2d6 Theme
+Version: 0.1
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: 2d6
+Text Domain: 2d6-domain
+*/
+
+@font-face {
+    font-family: dkPisand;
+    src: url(fonts/DK\ Pisang.otf);
+}
+
+body {
+    background-color: #DFDFDF;
+    margin: 0;
+    font-family: 'Droid Sans', sans-serif;
+    font-size: 1em;
+}
+img {
+    height: auto;
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+.tds-container {
+    width: 940px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+hr {
+    height: 2px;
+    width: 100%;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    background-color: #ffffff;
+}
+hr.rod-linje {
+    background-image: url("img/forside/horisontal-linje.png");
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 6px;
+}
+footer {
+    background-color: #3b3a3e;
+    min-height: 328px;
+}
+
+.tds-nav-toppmeny img {
+    padding-bottom: 0.5em;
+    padding-top: 0.5em;
+}
+
+.hamburger-meny {
+}
+
+
+.forside-topp-container {
+    position: relative;
+    width: 100%;
+}
+.forside-topp-bilde {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+.forside-skjult-bilde {
+    visibility: hidden;
+}
+.forside-om-tds-tekst {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+
+.forside-neste-turnering {
+    color: #f3f3f3;
+    background-image: url(img/forside/Bakgrunn_Turnering_Forside.png);
+    background-size: 100% auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    background-repeat: repeat-y;
+    padding-bottom: 2em;
+}
+.forside-neste-turnering-label {
+    width: 55%;
+    padding-top: 3em;
+}
+.forside-neste-turnering-paamelding {
+    max-width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.forside-neste-turnering-beskrivelse {
+    margin-top: 3em;
+    padding: 1em;
+    padding-left: 2em;
+    padding-right: 2em;
+    background-color: #930000;
+    color: #f3f3f3;
+}
+.forside-turneringskalender {
+    background-color: #ffffff;
+    border: solid 2px #930000;
+    padding: 1em;
+    padding-left: 2em;
+    padding-right: 2em;
+}
+.forside-turneringskalender-label {
+    font-family: dkPisand;
+    color: #930000;
+    font-size: 1.8em;
+    font-weight: bold;
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+}
+.forside-turneringskalender table {
+    width: 100%;
+
+}
+.forside-turneringskalender table:nth-child(1) {/*tr:first-child td {*/
+    border-top: none;
+}
+.forside-turneringskalender table td {
+    border-top: 1px solid #930000;
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+.forside-turneringskalender table td.forside-turneringskalender-separator {
+    height: 2px;
+    background-image: url("img/forside/horisontal-linje-2.png");
+    background-repeat: no-repeat;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+.forside-turneringskalender-turneringsnavn {
+    font-weight: bold;
+}
+.forside-turneringskalender-dato {
+    text-align: right;
+}
+.om-turneringer-heading {
+    width: 55%;
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+.mer-om-container {
+    text-align: right;
+    padding-bottom: 1em;
+    padding-right: 1em;
+}
+.mer-om-link {
+    text-align: right;
+    color: #930000;
+    font-weight: bold;
+}
+
+.forside-tds-hall-of-fame  .entry {
+    padding: 1em;
+}
+.forside-tds-hall-of-fame img {
+    width: 100%;
+    padding-bottom: 1em;
+}
+.forside-tds-hall-of-fame-teaser, .forside-tds-hall-of-fame-teaser a {
+    background-color: #3b3a3e;
+    color: #f3f3f3;
+    margin-bottom: 2em;
+}
+.forside-tds-hall-of-fame-teaser .more-link {
+    float: right;
+}
+.forside-tds-hall-of-fame-teaser .clearfix {
+    padding-bottom: 1em;
+}
+
+
