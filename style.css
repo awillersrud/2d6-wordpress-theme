@@ -19,20 +19,86 @@ Text Domain: 2d6-domain
 body {
     background-color: #DFDFDF;
     margin: 0;
-    font-family: 'Droid Sans', sans-serif;
+    font-family: 'Arial', sans-serif;
     font-size: 1em;
+    line-height: 1.5;
+}
+input {
+    border: 2px solid #DFDFDF;
+    border-radius: 2px;
+    box-shadow: inset 3px 3px 3px #ccc;
+}
+input[type="text"],
+input[type="password"]
+{
+    height: 30px;
+    width: 100%;
+}
+input[type="radio"] {
+    -webkit-appearance: checkbox;
+    -moz-appearance: checkbox;
+    -ms-appearance: checkbox;     /* not currently supported */
+    -o-appearance: checkbox;      /* not currently supported */
+    width: 20px;
+    height: 20px;
+}
+/* Images */
+.entry-content img,
+.comment-content img,
+.tds-container img,
+.widget img {
+max-width: 100%; /* Fluid images for posts, comments, and widgets */
+    }
+img[class*="align"],
+img[class*="wp-image-"] {
+    height: auto; /* Make sure images with WordPress-added height and width >attributes are scaled correctly */
+}
+img.size-full {
+    max-width: 100%;
+    width: auto; /* Prevent stretching of full-size images with height and >>width attributes in IE8 */
 }
 img {
-    height: auto;
-    max-width: 100%;
+    height: auto !important;
+    max-width: 100% !important;
     vertical-align: middle;
 }
-
+h1 {
+    font-size: 3em;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+h2 {
+    font-size: 2em;
+}
+a {
+    text-decoration: none;
+}
+.clearfix {
+    clear: both;
+}
 .tds-container {
-    width: 940px;
+    width: 865px;
     margin-left: auto;
     margin-right: auto;
     position: relative;
+}
+.tds-padding-liten-full {
+    padding: 10px;
+}
+.tds-padding-liten-topp {
+    padding-top: 10px;
+}
+.tds-padding-liten-bunn {
+    padding-bottom: 10px;
+}
+.tds-padding-liten {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.tds-padding-stor {
+    /*padding-top: 10px;*/
+    padding-left: 57px;
+    padding-right: 57px;
 }
 
 hr {
@@ -51,80 +117,125 @@ hr.rod-linje {
     height: 6px;
 }
 footer {
-    background-color: #3b3a3e;
+    background-color: #4c4b4f;
     min-height: 328px;
 }
-
-.tds-nav-toppmeny img {
-    padding-bottom: 0.5em;
+.label {
+    font-family: dkPisand;
+    margin: 0;
+}
+.label:after, .label:before {
+    content: url('img/forside/horisontal-linje.png');
+    overflow: hidden;
+    display: block;
     padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+.label:before {
+    padding-top: 1em;
+    padding-bottom: 0;
+}
+.label:after {
+    padding-top: 0;
+    padding-bottom: 0.5em;
+}
+.hvit {
+    background-color: #ffffff;
+    overflow: hidden;
+}
+.lys {
+    background-color: #f3f3f3;
+    overflow-y: hidden;
+}
+.mork {
+    background-color: #dfdfdf;
+    overflow-y: hidden;
+}
+.morkere {
+    color: #f3f3f3;
+    background-color: #4c4b4f;
+    overflow-y: hidden;
 }
 
-.hamburger-meny {
+.tds-nav-toppmeny {
+    background-image: url("img/nav/2d6-logo.png");
+    background-repeat: no-repeat;
+    height: 80px;
+}
+.tds-nav-toppmeny a.hjem {
+    width: 275px;
+    height: 80px;
+    padding: 0;
+}
+.tds-nav-toppmeny a {
+    font-family: dkPisand;
+    font-size: 20px;
+    font-weight: bold;
+    padding-top: 24px;
+    color: #000000;
+    text-decoration: none;
+    float: left;
+    padding-right: 20px;
+}
+.hoyre {
+    float: right !important;
+}
+.tds-army-selector-container {
+    float: left;
+    width: 28%;
+    margin-right: 30px;
 }
 
-
-.forside-topp-container {
-    position: relative;
+.tds-header {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    background-color: #ffffff;
+}
+.tds-header img {
     width: 100%;
 }
-.forside-topp-bilde {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-}
-.forside-skjult-bilde {
-    visibility: hidden;
-}
-.forside-om-tds-tekst {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-}
-
-
-.forside-neste-turnering {
-    color: #f3f3f3;
-    background-image: url(img/forside/Bakgrunn_Turnering_Forside.png);
-    background-size: 100% auto;
-    display: block;
+.header-image {
     margin-left: auto;
     margin-right: auto;
+}
+.forside-om-tds-tekst {
+    background-color: #ffffff;
+}
+
+.container-mork-graa-med-skyer {
+    color: #f3f3f3;
+    background-image: url(img/forside/neste-turnering-bakgrunn.jpg);
+    background-size: 100% auto;
+    display: block;
     width: 100%;
-    background-repeat: repeat-y;
+    background-repeat: repeat;
     padding-bottom: 2em;
 }
-.forside-neste-turnering-label {
-    width: 55%;
-    padding-top: 3em;
-}
-.forside-neste-turnering-paamelding {
+.rod-knapp-container {
     max-width: 30%;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 3em;
 }
 .forside-neste-turnering-beskrivelse {
-    margin-top: 3em;
-    padding: 1em;
-    padding-left: 2em;
-    padding-right: 2em;
+    /*padding: 1em;*/
+    /*padding-left: 1.5em;*/
+    /*padding-right: 1.5em;*/
     background-color: #930000;
     color: #f3f3f3;
 }
 .forside-turneringskalender {
     background-color: #ffffff;
     border: solid 2px #930000;
-    padding: 1em;
-    padding-left: 2em;
-    padding-right: 2em;
+    /*padding: 1em;*/
+    /*padding-left: 1.5em;*/
+    /*padding-right: 1.5em;*/
 }
 .forside-turneringskalender-label {
     font-family: dkPisand;
     color: #930000;
     font-size: 1.8em;
     font-weight: bold;
-    padding-top: 0.3em;
     padding-bottom: 0.3em;
 }
 .forside-turneringskalender table {
@@ -135,7 +246,7 @@ footer {
     border-top: none;
 }
 .forside-turneringskalender table td {
-    border-top: 1px solid #930000;
+    /*border-top: 1px solid #930000;*/
     border: 0;
     padding: 0;
     margin: 0;
@@ -169,23 +280,42 @@ footer {
     font-weight: bold;
 }
 
-.forside-tds-hall-of-fame  .entry {
-    padding: 1em;
-}
-.forside-tds-hall-of-fame img {
+.forside-tds-hall-of-fame-logo {
     width: 100%;
+    padding-top: 1em;
     padding-bottom: 1em;
 }
-.forside-tds-hall-of-fame-teaser, .forside-tds-hall-of-fame-teaser a {
-    background-color: #3b3a3e;
+.tds-hall-of-fame-post, .tds-hall-of-fame-post a {
+    background-color: #4c4b4f;
     color: #f3f3f3;
     margin-bottom: 2em;
 }
-.forside-tds-hall-of-fame-teaser .more-link {
+.tds-hall-of-fame-post .more-link {
     float: right;
 }
-.forside-tds-hall-of-fame-teaser .clearfix {
+.tds-hall-of-fame-post .clearfix {
     padding-bottom: 1em;
 }
+
+@media screen and (max-width: 900px) {
+    .tds-container {
+        width: 685px;
+    }
+    .tds-nav-toppmeny a.hjem {
+        clear: both;
+    }
+    .tds-nav-toppmeny a.meny {
+        float: left;
+    }
+    .tds-nav-toppmeny {
+        height: 120px;
+    }
+}
+@media screen and (max-width: 700px) {
+    .tds-container {
+        width: 535px;
+    }
+}
+
 
 
