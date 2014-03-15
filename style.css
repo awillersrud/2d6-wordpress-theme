@@ -23,6 +23,10 @@ body {
     font-size: 1em;
     line-height: 1.5;
 }
+form {
+    margin: 0;
+    padding: 0;
+}
 input {
     border: 2px solid #DFDFDF;
     border-radius: 2px;
@@ -39,8 +43,6 @@ input[type="radio"] {
     -moz-appearance: checkbox;
     -ms-appearance: checkbox;     /* not currently supported */
     -o-appearance: checkbox;      /* not currently supported */
-    width: 20px;
-    height: 20px;
 }
 /* Images */
 .entry-content img,
@@ -52,6 +54,9 @@ max-width: 100%; /* Fluid images for posts, comments, and widgets */
 img[class*="align"],
 img[class*="wp-image-"] {
     height: auto; /* Make sure images with WordPress-added height and width >attributes are scaled correctly */
+}
+.wp-caption {
+    width: 100% !important;
 }
 img.size-full {
     max-width: 100%;
@@ -96,7 +101,6 @@ a {
     padding-right: 10px;
 }
 .tds-padding-stor {
-    /*padding-top: 10px;*/
     padding-left: 57px;
     padding-right: 57px;
 }
@@ -211,25 +215,24 @@ footer {
     background-repeat: repeat;
     padding-bottom: 2em;
 }
+.send-paamelding {
+    padding-top: 3em;
+}
+.gaa-til-paamelding {
+    margin-bottom: 3em;
+}
 .rod-knapp-container {
     max-width: 30%;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 3em;
 }
 .forside-neste-turnering-beskrivelse {
-    /*padding: 1em;*/
-    /*padding-left: 1.5em;*/
-    /*padding-right: 1.5em;*/
     background-color: #930000;
     color: #f3f3f3;
 }
 .forside-turneringskalender {
     background-color: #ffffff;
     border: solid 2px #930000;
-    /*padding: 1em;*/
-    /*padding-left: 1.5em;*/
-    /*padding-right: 1.5em;*/
 }
 .forside-turneringskalender-label {
     font-family: dkPisand;
@@ -246,7 +249,6 @@ footer {
     border-top: none;
 }
 .forside-turneringskalender table td {
-    /*border-top: 1px solid #930000;*/
     border: 0;
     padding: 0;
     margin: 0;
@@ -285,16 +287,20 @@ footer {
     padding-top: 1em;
     padding-bottom: 1em;
 }
-.tds-hall-of-fame-post, .tds-hall-of-fame-post a {
+.tds-hall-of-fame-post {
     background-color: #4c4b4f;
     color: #f3f3f3;
     margin-bottom: 2em;
 }
+.tds-hall-of-fame-post a {
+    color: #f3f3f3;
+}
+.forside-tds-hall-of-fame .more-link {
+    display: none;
+}
 .tds-hall-of-fame-post .more-link {
     float: right;
-}
-.tds-hall-of-fame-post .clearfix {
-    padding-bottom: 1em;
+    margin-top: 1em;
 }
 
 @media screen and (max-width: 900px) {

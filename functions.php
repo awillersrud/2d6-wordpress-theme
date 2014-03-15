@@ -3,13 +3,13 @@
 add_theme_support( 'admin-bar', array( 'callback' => '__return_false' ) );
 add_theme_support( 'post-thumbnails' );
 
-function display_hall_of_fame_posts($number_of_posts = 10, $full_post = false) {
+function display_hall_of_fame_posts($number_of_posts = 10, $full_post = false, $hall_of_fame_link = false) {
     rewind_posts();
     query_posts('category_name=hall-of-fame&posts_per_page=' . $number_of_posts);
     global $more;
     $more = 0;
     while (have_posts()) : the_post(); ?>
-    <div class="tds-hall-of-fame-post tds-padding-liten tds-padding-liten-topp tds-padding-liten-bunn">
+    <div class="tds-hall-of-fame-post tds-padding-liten-full">
 
         <?php
         if ($full_post) {
@@ -19,6 +19,10 @@ function display_hall_of_fame_posts($number_of_posts = 10, $full_post = false) {
                 the_post_thumbnail();
             }
             the_content('Les mer »');
+            if ($hall_of_fame_link) {?>
+                <a class="hoyre" href="<?php echo get_bloginfo('wpurl') . "/hall-of-fame"?>">Til Hall of Fame »</a>
+            <?php
+            }
         }
         ?>
         <div class="clearfix" ></div>

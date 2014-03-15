@@ -23,7 +23,7 @@
                         <img src="<?php bloginfo('template_directory'); ?>/img/forside/neste-turnering-overskrift.png"/>
                         <img src="<?php bloginfo('template_directory'); ?>/img/crusade/Crusade2014.png"/>
 
-                        <div class="rod-knapp-container">
+                        <div class="rod-knapp-container gaa-til-paamelding">
                             <a href="<?php echo get_bloginfo('wpurl') . "/2d6-crusade" ?>" class="rod-knapp"><img
                                 src="<?php bloginfo('template_directory'); ?>/img/forside/KnappPaamelding_Forside.png"/></a>
                         </div>
@@ -132,7 +132,7 @@
         </div>
         <p>I 2d6 Hall of Fame finner du alle hærene som har vunnet best painted i en av våre turneringer. Les mer om hvordan kåringene foregår, de forskjellige enhetene i hæren og teknikkene brukt.</p>
 
-        <?php display_hall_of_fame_posts(1); ?>
+        <?php display_hall_of_fame_posts(1, false, true); ?>
 
         </div>
     </div>
