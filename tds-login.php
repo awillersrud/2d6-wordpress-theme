@@ -15,6 +15,12 @@ if ( force_ssl_admin() && ! is_ssl() ) {
     }
 }
 
+$action = isset($_REQUEST['action']) ? $_REQUEST['action'] : 'login';
+
+if ( is_user_logged_in() ) {
+    wp_redirect( home_url() ); exit;
+}
+
 
 get_header(); ?>
 
@@ -34,13 +40,6 @@ get_header(); ?>
                 <div class="tds-padding-liten-full">
 
 <?php
-
-$action = isset($_REQUEST['action']) ? $_REQUEST['action'] : 'login';
-
-if ( is_user_logged_in() ) {
-    wp_redirect( home_url() ); exit;
-}
-
 $args = array(
     'redirect'       => site_url( $_SERVER['REQUEST_URI'] ),
     'form_id' => 'loginform-tds',

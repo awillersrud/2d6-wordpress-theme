@@ -28,10 +28,11 @@
         <a class="meny" href="<?php echo get_bloginfo('wpurl') . "/hall-of-fame"?>">HALL OF FAME</a>
 
       <a class="meny hoyre" href="http://www.2d6.no">2D6 FORUM</a>
-      <?php if ( is_user_logged_in() ) {?>
-      <a class="meny hoyre" href="<?php echo wp_logout_url( home_url() ); ?>">LOGG UT</a>
+      <?php
+      if ( is_user_logged_in() ) { ?>
+      <a class="meny hoyre" href="<?php echo wp_logout_url( get_home_url() ); ?>">LOGG UT</a>
       <?php } else { ?>
-      <a class="meny hoyre" href="<?php echo get_bloginfo('wpurl') . "/wp-login.php"?>">LOGG INN</a>
+      <a class="meny hoyre" href="<?php echo get_bloginfo('wpurl') . "/login"?>">LOGG INN</a>
       <?php } ?>
 
 <!--      </div>-->

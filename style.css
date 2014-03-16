@@ -32,6 +32,10 @@ input {
     border-radius: 2px;
     box-shadow: inset 3px 3px 3px #ccc;
 }
+input[type="image"] {
+    border: 0;
+    box-shadow: none;
+}
 input[type="text"],
 input[type="password"]
 {
@@ -77,6 +81,7 @@ h2 {
 }
 a {
     text-decoration: none;
+    color: #930000;
 }
 .clearfix {
     clear: both;
@@ -120,26 +125,35 @@ hr.rod-linje {
     width: 100%;
     height: 6px;
 }
+.feilmelding {
+    color: red;
+    font-weight: bold;
+}
 footer {
     background-color: #4c4b4f;
     min-height: 328px;
 }
-.label {
+.haandskrift {
     font-family: dkPisand;
+}
+.rod-tekst {
+    color: #930000;
+}
+.rode-linjer {
     margin: 0;
 }
-.label:after, .label:before {
+.rode-linjer:after, .rode-linjer:before {
     content: url('img/forside/horisontal-linje.png');
     overflow: hidden;
     display: block;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
 }
-.label:before {
+.rode-linjer:before {
     padding-top: 1em;
     padding-bottom: 0;
 }
-.label:after {
+.rode-linjer:after {
     padding-top: 0;
     padding-bottom: 0.5em;
 }
@@ -303,6 +317,31 @@ footer {
     margin-top: 1em;
 }
 
+.deltagerliste {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.deltagerliste-kolonne li {
+    height: 50px;
+}
+.deltagerliste-kolonne span.deltagerliste-navn {
+    font-weight: bold;
+}
+.deltagerliste-kolonne span.deltagerliste-haer {
+    display: block;
+}
+.deltagerliste-kolonne {
+    width: 50%;
+    float: left;
+}
+.deltagerliste-nummer {
+    float: left;
+    padding-right: 0.5em;
+}
+.deltagerliste div {
+    display: inline-block;
+}
 @media screen and (max-width: 900px) {
     .tds-container {
         width: 685px;
@@ -322,6 +361,4 @@ footer {
         width: 535px;
     }
 }
-
-
 

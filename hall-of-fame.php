@@ -38,7 +38,7 @@ $header_image_url = get_bloginfo('template_directory') . "/img/hall-of-fame/head
 
 <div class="lys">
     <div class="tds-container">
-        <h2 class="label">Vinnere «BEST ARMY»</h2>
+        <h2 class="haandskrift rode-linjer">Vinnere «BEST ARMY»</h2>
         <?php display_hall_of_fame_posts(10); ?>
     </div>
 </div>
