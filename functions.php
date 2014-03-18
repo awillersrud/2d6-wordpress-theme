@@ -36,7 +36,10 @@ function paamelding() {
 
     if ( ! $http_post ) {
 	if (is_user_logged_in() && er_paameldt(wp_get_current_user()->ID, 1)) { ?>
-	    <p><b>Du er allerede påmeldt!</b> Husk at påmelding er bindende, hvis du allikevel ikke kan delta setter vi pris på å få beskjed på forhånd slik at vi kan beregne paringen best mulig. Send en mail til <a href="mailto:erik@2d6.com">Erik Svendsen</a> for avmelding.</p>
+    <p><b>Du er allerede påmeldt!</b> Husk at påmelding er bindende, hvis du allikevel ikke kan delta setter vi pris på
+        å få beskjed på forhånd slik at vi kan beregne paringen best mulig. Send en mail til
+        <a href="mailto:turnering@spillforeningen2d6.no">turnering@spillforeningen2d6.no</a> for avmelding.</p>
+
 	<?php
 	} else {
 	    display_paameldingskjema();
