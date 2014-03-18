@@ -35,31 +35,31 @@ function paamelding() {
     $http_post = ('POST' == $_SERVER['REQUEST_METHOD']);
 
     if ( ! $http_post ) {
-        if (is_user_logged_in() && er_paameldt(wp_get_current_user()->ID, 1)) { ?>
-            <p>Du er påmeldt</p>
-        <?php
-        } else {
-            display_paameldingskjema();
-        }
+	if (is_user_logged_in() && er_paameldt(wp_get_current_user()->ID, 1)) { ?>
+	    <p><b>Du er allerede påmeldt!</b> Husk at påmelding er bindende, hvis du allikevel ikke kan delta setter vi pris på å få beskjed på forhånd slik at vi kan beregne paringen best mulig. Send en mail til <a href="mailto:erik@2d6.com">Erik Svendsen</a> for avmelding.</p>
+	<?php
+	} else {
+	    display_paameldingskjema();
+	}
     } else {
 
-        if (is_user_logged_in()) {
+	if (is_user_logged_in()) {
 
-            if (!isset($_POST['haer'])) {
-                $errors = new WP_Error();
-                $errors->add('haer_error', '<span class="feilmelding">Hær er påkrevd</span><br />');
-                display_paameldingskjema($errors);
-            } else {
-                $haer = $_POST['haer'];
-                $user = wp_get_current_user();
-                insert_player($user->first_name, $user->last_name, $user->user_email, $haer, $user->ID, 1);
-                bekreft_paamelding();
-            }
+	    if (!isset($_POST['haer'])) {
+		$errors = new WP_Error();
+		$errors->add('haer_error', '<span class="feilmelding">Hær er påkrevd</span><br />');
+		display_paameldingskjema($errors);
+	    } else {
+		$haer = $_POST['haer'];
+		$user = wp_get_current_user();
+		insert_player($user->first_name, $user->last_name, $user->user_email, $haer, $user->ID, 1);
+		bekreft_paamelding();
+	    }
 
-        } else {
+	} else {
 
-            registrer_paamelding_uten_bruker();
-        }
+	    registrer_paamelding_uten_bruker();
+	}
     }
 }
 
@@ -136,7 +136,7 @@ function display_paameldingskjema(WP_Error $errors = null, $first_name = null, $
     $errors = $errors == null ? new WP_Error() : $errors;
     ?>
         <form action="#paamelding" method="POST">
-            <span>Fyll ut feltene under for å melde deg på til 2d6 Crusade 2014. Kanskje noe mer tekst, skal det være bindende på melding. Bør aldersgrensen nevnes her.</span>
+            <span>Fyll ut feltene under for å melde deg på til 2d6 Crusade 2014. Påmelding til 2d6 Crusade er bindende. Hvis du allikevel finner ut at du ikke får deltatt etter at du er påmeldt, gi beskjed til turnering@spillforeningen2d6.no. Aldersgrense for å delta er 16 år.</span>
 
             <?php if (is_user_logged_in()) {
             ?>
