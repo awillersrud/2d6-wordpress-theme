@@ -25,7 +25,7 @@
 			</a>
 
 			<div class="rod-knapp-container gaa-til-paamelding">
-			    <a href="<?php echo get_bloginfo('wpurl') . "/2d6-Crusade/#paamelding" ?>" class="rod-knapp"><img
+			    <a href="<?php echo get_bloginfo('wpurl') . "/2d6-crusade" ?>" class="rod-knapp"><img
 				src="<?php bloginfo('template_directory'); ?>/img/forside/KnappPaamelding_Forside.png"/></a>
 			</div>
 
@@ -144,7 +144,7 @@ Man må kunne grunnreglene og normalt være 16 år eller eldre for deltakelse. <
     <div class="tds-container">
 	<div class="tds-padding-liten">
 	<div class="tds-padding-stor">
-	    <a href="hall-of-fame">
+	    <a href="<?php echo get_bloginfo('wpurl') . "/halloffame" ?>">
 		<img class="forside-tds-hall-of-fame-logo" src="<?php bloginfo('template_directory'); ?>/img/hall-of-fame/header_image.png" alt="2d6 Hall of Fame">
 	    </a>
 	</div>

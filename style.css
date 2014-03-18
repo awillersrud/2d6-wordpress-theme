@@ -179,6 +179,10 @@ footer {
     font-weight: bold;
 }
 
+#sb-site {
+    overflow-y: scroll; /* has to be scroll, not auto */
+    -webkit-overflow-scrolling: touch;
+}
 .tds-nav-toppmeny a,
 nav.sb-slidebar .menu-header img {
     padding-top: 13px;
@@ -186,7 +190,7 @@ nav.sb-slidebar .menu-header img {
     padding-left: 10px;
 }
 .hamburger-meny {
-    padding-top: 30px !important;
+    padding: 30px !important;
     cursor: pointer;
 }
 .tds-nav-toppmeny {
@@ -364,9 +368,6 @@ nav.sb-slidebar .menu-header img {
     }
     .tds-nav-toppmeny a.meny {
         float: left;
-    }
-    .tds-nav-toppmeny {
-        height: 120px;
     }
 }
 @media screen and (max-width: 700px) {
