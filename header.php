@@ -22,10 +22,10 @@
 <div class="tds-container">
   <div class="tds-nav-toppmeny">
     <a class="hjem" href="<?php bloginfo('wpurl') ?>" ></a>
-<!--    <div class="meny-container">-->
-        <a class="meny" href="<?php echo get_bloginfo('wpurl') . "/om-2d6" ?>">OM 2D6</a>
-        <a class="meny" href="<?php echo get_bloginfo('wpurl') . "/om-2d6-turneringer"?>">OM TURNERINGER</a>
-        <a class="meny" href="<?php echo get_bloginfo('wpurl') . "/hall-of-fame"?>">HALL OF FAME</a>
+<!--	<div class="meny-container">-->
+	<a class="meny" href="<?php echo get_bloginfo('wpurl') . "/om-2d6" ?>">OM 2D6</a>
+	<a class="meny" href="<?php echo get_bloginfo('wpurl') . "/om-2d6-turneringer"?>">OM TURNERINGER</a>
+	<a class="meny" href="<?php echo get_bloginfo('wpurl') . "/halloffame"?>">HALL OF FAME</a>
 
       <a class="meny hoyre" href="http://www.2d6.no">2D6 FORUM</a>
       <?php

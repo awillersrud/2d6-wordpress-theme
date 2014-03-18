@@ -20,7 +20,7 @@ function display_hall_of_fame_posts($number_of_posts = 10, $full_post = false, $
             }
             the_content('Les mer »');
             if ($hall_of_fame_link) {?>
-                <a class="hoyre" href="<?php echo get_bloginfo('wpurl') . "/hall-of-fame"?>">Til Hall of Fame »</a>
+                <a class="hoyre" href="<?php echo get_bloginfo('wpurl') . "/halloffame"?>">Til Hall of Fame »</a>
             <?php
             }
         }
