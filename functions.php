@@ -34,70 +34,101 @@ function display_hall_of_fame_posts($number_of_posts = 10, $full_post = false, $
 function paamelding() {
     $http_post = ('POST' == $_SERVER['REQUEST_METHOD']);
 
-    if ( $http_post ) {
-        $errors = new WP_Error();
-
-        $fornavn = $_POST['first_name'];
-        $etternavn = $_POST['last_name'];
-        $epost = $_POST['email'];
-        $brukernavn = $_POST['username'];
-
-        if ( empty($fornavn))
-            $errors->add( 'first_name_error', '<span class="feilmelding">Fornavn er påkrevd</span><br />');
-        if ( empty ($etternavn) )
-            $errors->add( 'last_name_error', '<span class="feilmelding">Etternavn er påkrevd</span><br />');
-
-        if ( empty($epost) ) {
-            $errors->add( 'email_error', __( '<span class="feilmelding">Epost er påkrevd</span><br />' ) );
-        } elseif ( ! is_email( $epost ) ) {
-            $errors->add( 'email_error', __( '<span class="feilmelding">Epost adressen er ikke korrekt</span><br />' ) );
-            $epost = '';
-        } elseif ( email_exists( $epost ) ) {
-            $errors->add( 'email_error', __( '<span class="feilmelding">Epost adressen er allerede registrert</span><br />' ) );
-        }
-
-        if (!isset($_POST['haer']) ) {
-            $errors->add( 'haer_error', '<span class="feilmelding">Hær er påkrevd</span><br />');
+    if ( ! $http_post ) {
+        if (is_user_logged_in() && er_paameldt(wp_get_current_user()->ID, 1)) { ?>
+            <p>Du er påmeldt</p>
+        <?php
         } else {
-            $haer = $_POST['haer'];
-        }
-
-
-
-        if (empty ($errors->errors)) {
-
-            $user_id = null;
-            if (!empty( $_POST['username'] )) {
-                $errors = register_new_user($brukernavn, $epost);
-                if ( !is_wp_error($errors) ) {
-                    $user_id = get_user_by('email', $epost)->ID;
-//                                $redirect_to = !empty( $_POST['redirect_to'] ) ? $_POST['redirect_to'] : 'wp-login.php?checkemail=registered';
-//                                wp_safe_redirect( $redirect_to );
-//                                exit();
-                } else {
-                    foreach ($errors->error_data as $error_data) {
-                        echo $error_data;
-                    }
-                }
-            }
-
-            if (empty ($errors->errors)) {
-                insert_player($fornavn, $etternavn, $epost, $haer, $user_id, 1);
-                ?>
-
-            <h3>Takk, din påmelding er registrert</h3>
-
-            <?php if ($user_id != null) { ?>
-                <p>Epost med passord til din nye bruker på spillforeningen2d6.no er sendt til <?php echo $epost ?></p>
-                <?php
-                }
-            }
-        } else {
-            display_paameldingskjema($errors, $fornavn, $etternavn, $epost, $brukernavn, $haer);
+            display_paameldingskjema();
         }
     } else {
-        display_paameldingskjema();
+
+        if (is_user_logged_in()) {
+
+            if (!isset($_POST['haer'])) {
+                $errors = new WP_Error();
+                $errors->add('haer_error', '<span class="feilmelding">Hær er påkrevd</span><br />');
+                display_paameldingskjema($errors);
+            } else {
+                $haer = $_POST['haer'];
+                $user = wp_get_current_user();
+                insert_player($user->first_name, $user->last_name, $user->user_email, $haer, $user->ID, 1);
+                bekreft_paamelding();
+            }
+
+        } else {
+
+            registrer_paamelding_uten_bruker();
+        }
     }
+}
+
+function registrer_paamelding_uten_bruker()
+{
+    $errors = new WP_Error();
+
+    $fornavn = $_POST['first_name'];
+    $etternavn = $_POST['last_name'];
+    $epost = $_POST['email'];
+    $brukernavn = $_POST['username'];
+    $haer = null;
+
+    if (empty($fornavn))
+        $errors->add('first_name_error', '<span class="feilmelding">Fornavn er påkrevd</span><br />');
+    if (empty ($etternavn))
+        $errors->add('last_name_error', '<span class="feilmelding">Etternavn er påkrevd</span><br />');
+
+    if (empty($epost)) {
+        $errors->add('email_error', __('<span class="feilmelding">Epost er påkrevd</span><br />'));
+    } elseif (!is_email($epost)) {
+        $errors->add('email_error', __('<span class="feilmelding">Epost adressen er ikke korrekt</span><br />'));
+        $epost = '';
+    } elseif (email_exists($epost)) {
+        $errors->add('email_error', __('<span class="feilmelding">Epost adressen er allerede registrert</span><br />'));
+    }
+
+    if (!isset($_POST['haer'])) {
+        $errors->add('haer_error', '<span class="feilmelding">Hær er påkrevd</span><br />');
+    } else {
+        $haer = $_POST['haer'];
+    }
+
+
+    if (empty ($errors->errors)) {
+
+        $ny_bruker_id = null;
+        if (!empty($_POST['username'])) {
+            $errors = register_new_user($brukernavn, $epost);
+            if (!is_wp_error($errors)) {
+                $ny_bruker_id = get_user_by('email', $epost)->ID;
+                //                                $redirect_to = !empty( $_POST['redirect_to'] ) ? $_POST['redirect_to'] : 'wp-login.php?checkemail=registered';
+                //                                wp_safe_redirect( $redirect_to );
+                //                                exit();
+            } else {
+                foreach ($errors->error_data as $error_data) {
+                    echo $error_data;
+                }
+            }
+        }
+
+        if (empty ($errors->errors)) {
+            insert_player($fornavn, $etternavn, $epost, $haer, $ny_bruker_id, 1);
+
+            bekreft_paamelding($ny_bruker_id);
+        }
+    } else {
+        display_paameldingskjema($errors, $fornavn, $etternavn, $epost, $brukernavn, $haer);
+    }
+}
+
+function bekreft_paamelding($ny_bruker_id = null) {
+    ?>
+
+    <h3>Takk, din påmelding er registrert</h3>
+
+    <?php if ($ny_bruker_id != null) { ?>
+        <p>Epost med passord til din nye bruker på spillforeningen2d6.no er sendt til <?php echo $epost ?></p>
+    <?php }
 }
 
 function display_paameldingskjema(WP_Error $errors = null, $first_name = null, $last_name = null, $email = null, $username = null, $haer = null) {
@@ -107,8 +138,9 @@ function display_paameldingskjema(WP_Error $errors = null, $first_name = null, $
         <form action="#paamelding" method="POST">
             <span>Fyll ut feltene under for å melde deg på til 2d6 Crusade 2014. Kanskje noe mer tekst, skal det være bindende på melding. Bør aldersgrensen nevnes her.</span>
 
-            <?php if (is_user_logged_in()) { ?>
-                <p>Du er logget inn som <?php wp_get_current_user()->get('display_name') ?></p>
+            <?php if (is_user_logged_in()) {
+            ?>
+                <p>Du er logget inn som <?php echo wp_get_current_user()->display_name ?></p>
 
             <?php } else { ?>
                 <p>
@@ -198,7 +230,7 @@ function tds_deltagerliste() {
 
     $split_indeks = $turnering->max_players / 2;
 
-    $tom_deltagerliste = array_fill(1, $turnering->max_players, null);
+    $tom_deltagerliste = array_fill(0, $turnering->max_players, null);
 
     $full_deltagerliste = array_replace($tom_deltagerliste, $spillere);
 
@@ -212,10 +244,10 @@ function tds_deltagerliste() {
     <div class="deltagerliste-kolonne">
 
         <?php
-        foreach ($kolonne1 as $indeks=>$spiller) display_deltager($indeks, $spiller); ?>
+        foreach ($kolonne1 as $indeks=>$spiller) display_deltager($indeks + 1, $spiller); ?>
     </div>
     <div class="deltagerliste-kolonne">
-        <?php foreach ($kolonne2 as $indeks=>$spiller) display_deltager($indeks, $spiller); ?>
+        <?php foreach ($kolonne2 as $indeks=>$spiller) display_deltager($indeks + 1, $spiller); ?>
     </div>
 </ol>
 <?php
@@ -236,8 +268,12 @@ function display_deltager($indeks, Player $spiller=null) {
     <?php
 }
 
+add_filter('login_url', 'tds_login_url', 10, 2);
+function tds_login_url($login_url, $redirect) {
+    return get_site_url() . "/login";
+}
 
-add_action( 'wp_login_failed', 'tds_front_end_login_fail' );
+add_action('wp_login_failed', 'tds_front_end_login_fail' );
 
 function tds_front_end_login_fail( $username ) {
     $referrer = $_SERVER['HTTP_REFERER'];  // where did the post submission come from?

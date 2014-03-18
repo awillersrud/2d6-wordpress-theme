@@ -21,10 +21,13 @@
                 <div class="tds-padding-liten-topp tds-padding-liten-bunn">
                     <div class="tds-padding-stor">
                         <img src="<?php bloginfo('template_directory'); ?>/img/forside/neste-turnering-overskrift.png"/>
-                        <img src="<?php bloginfo('template_directory'); ?>/img/crusade/Crusade2014.png"/>
+
+                        <a href="<?php echo get_bloginfo('wpurl') . "/2d6-Crusade" ?>">
+                            <img src="<?php bloginfo('template_directory'); ?>/img/crusade/Crusade2014.png"/>
+                        </a>
 
                         <div class="rod-knapp-container gaa-til-paamelding">
-                            <a href="<?php echo get_bloginfo('wpurl') . "/2d6-crusade" ?>" class="rod-knapp"><img
+                            <a href="<?php echo get_bloginfo('wpurl') . "/2d6-Crusade/#paamelding" ?>" class="rod-knapp"><img
                                 src="<?php bloginfo('template_directory'); ?>/img/forside/KnappPaamelding_Forside.png"/></a>
                         </div>
 

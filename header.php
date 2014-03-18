@@ -6,7 +6,7 @@
     <!-- Le styles -->
     <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
     <link href="<?php bloginfo('stylesheet_url');?>" rel="stylesheet">
-    <link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/favicon.png" />
+    <link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/favicon-2.png" />
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -32,7 +32,7 @@
       if ( is_user_logged_in() ) { ?>
       <a class="meny hoyre" href="<?php echo wp_logout_url( get_home_url() ); ?>">LOGG UT</a>
       <?php } else { ?>
-      <a class="meny hoyre" href="<?php echo get_bloginfo('wpurl') . "/login"?>">LOGG INN</a>
+      <a class="meny hoyre" href="<?php echo wp_login_url() ?>">LOGG INN</a>
       <?php } ?>
 
 <!--      </div>-->
