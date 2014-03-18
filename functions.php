@@ -56,7 +56,7 @@ function paamelding() {
 		$haer = $_POST['haer'];
 		$user = wp_get_current_user();
 		insert_player($user->first_name, $user->last_name, $user->user_email, $haer, $user->ID, 1);
-		bekreft_paamelding();
+		bekreft_paamelding($user->user_email);
 	    }
 
 	} else {
@@ -73,7 +73,7 @@ function registrer_paamelding_uten_bruker()
     $fornavn = $_POST['first_name'];
     $etternavn = $_POST['last_name'];
     $epost = $_POST['email'];
-    $brukernavn = $_POST['username'];
+    $brukernavn = $_POST['user_login'];
     $haer = null;
 
     if (empty($fornavn))
@@ -100,31 +100,28 @@ function registrer_paamelding_uten_bruker()
     if (empty ($errors->errors)) {
 
         $ny_bruker_id = null;
-        if (!empty($_POST['username'])) {
+        if (!empty($_POST['user_login'])) {
             $errors = register_new_user($brukernavn, $epost);
             if (!is_wp_error($errors)) {
                 $ny_bruker_id = get_user_by('email', $epost)->ID;
-                //                                $redirect_to = !empty( $_POST['redirect_to'] ) ? $_POST['redirect_to'] : 'wp-login.php?checkemail=registered';
-                //                                wp_safe_redirect( $redirect_to );
-                //                                exit();
-            } else {
-                foreach ($errors->error_data as $error_data) {
-                    echo $error_data;
-                }
-            }
-        }
+                insert_player($fornavn, $etternavn, $epost, $haer, $ny_bruker_id, 1);
 
-        if (empty ($errors->errors)) {
+                bekreft_paamelding($epost, $ny_bruker_id);
+            } else {
+                display_paameldingskjema($errors, $fornavn, $etternavn, $epost, $brukernavn, $haer);
+            }
+        } else {
             insert_player($fornavn, $etternavn, $epost, $haer, $ny_bruker_id, 1);
 
-            bekreft_paamelding($ny_bruker_id);
+            bekreft_paamelding($epost, $ny_bruker_id);
         }
+
     } else {
         display_paameldingskjema($errors, $fornavn, $etternavn, $epost, $brukernavn, $haer);
     }
 }
 
-function bekreft_paamelding($ny_bruker_id = null) {
+function bekreft_paamelding($epost, $ny_bruker_id = null) {
     ?>
 
     <h3>Takk, din påmelding er registrert</h3>
@@ -164,9 +161,10 @@ function display_paameldingskjema(WP_Error $errors = null, $first_name = null, $
                     </label>
                 </p>
                 <p>
-                    <label for="username">Brukernavn (for å registrere deg som bruker på denne siden):<br />
-                        <?php echo $errors->get_error_message("username_error") ?>
-                        <input type="text" name="username" id="username" class="text" value="<?php echo esc_attr(stripslashes($username)); ?>" size="25" /></label>
+                    <label for="user_login">Brukernavn (for å registrere deg som bruker på denne siden):<br />
+                        <?php echo $errors->get_error_message("user_login_error") ?>
+                        <?php echo $errors->get_error_message("username_exists") ?>
+                        <input type="text" name="user_login" id="user_login" class="text" value="<?php echo esc_attr(stripslashes($username)); ?>" size="25" /></label>
                 </p>
 
             <?php } ?>
