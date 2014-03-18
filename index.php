@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 
-<div class="tds-container hvit tds-header" xmlns="http://www.w3.org/1999/html">
+<div class="tds-container hvit forside-header" xmlns="http://www.w3.org/1999/html">
     <div class="tds-padding-liten tds-padding-liten-topp tds-padding-liten-bunn">
 	<img class="" src="<?php bloginfo('template_directory'); ?>/img/forside/2d6-header.jpg">
 	<span class="forside-om-tds-tekst">

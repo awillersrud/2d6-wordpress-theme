@@ -179,26 +179,34 @@ footer {
     font-weight: bold;
 }
 
+.tds-nav-toppmeny a,
+nav.sb-slidebar .menu-header img {
+    padding-top: 13px;
+    padding-bottom: 13px;
+    padding-left: 10px;
+}
+.hamburger-meny {
+    padding-top: 30px !important;
+    cursor: pointer;
+}
 .tds-nav-toppmeny {
-    background-image: url("img/nav/2d6-logo.png");
-    background-repeat: no-repeat;
-    height: 80px;
+    height: 84px;
 }
-.tds-nav-toppmeny a.hjem {
-    width: 275px;
-    height: 80px;
-    padding: 0;
-}
-.tds-nav-toppmeny a {
-    font-family: dkPisand;
-    font-size: 20px;
-    font-weight: bold;
-    padding-top: 24px;
-    color: #000000;
-    text-decoration: none;
-    float: left;
-    padding-right: 20px;
-}
+/*.tds-nav-toppmeny a.hjem {*/
+    /*width: 275px;*/
+    /*height: 80px;*/
+    /*padding: 0;*/
+/*}*/
+/*.tds-nav-toppmeny a {*/
+    /*font-family: dkPisand;*/
+    /*font-size: 20px;*/
+    /*font-weight: bold;*/
+    /*padding-top: 24px;*/
+    /*color: #000000;*/
+    /*text-decoration: none;*/
+    /*float: left;*/
+    /*padding-right: 20px;*/
+/*}*/
 .hoyre {
     float: right !important;
 }
@@ -207,14 +215,6 @@ footer {
     width: 235px;
 }
 
-.tds-header {
-    margin-top: 1em;
-    margin-bottom: 1em;
-    background-color: #ffffff;
-}
-.tds-header img {
-    width: 100%;
-}
 .header-image {
     margin-left: auto;
     margin-right: auto;
@@ -245,6 +245,12 @@ footer {
     margin-right: auto;
     margin-left: auto;
 }
+.forside-header {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    background-color: #ffffff;
+}
+
 .forside-neste-turnering-beskrivelse {
     background-color: #930000;
     color: #f3f3f3;
@@ -369,3 +375,42 @@ footer {
     }
 }
 
+
+nav.sb-slidebar .menu-header img {
+    /*width: 34px*/
+}
+
+nav.sb-slidebar ul, nav.sb-slidebar ol {
+    list-style-type: none;
+    margin: 0;
+    padding: 0
+}
+
+nav.sb-slidebar>ol>li {
+    border-bottom: 1px solid #2e2d31
+}
+
+nav.sb-slidebar ol a, nav.sb-slidebar ol .portlet-artikkel-show .byline .author h3 a {
+    background: #3b3a3e;
+    display: block;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none
+}
+
+nav.sb-slidebar ol a:hover, nav.sb-slidebar ol .portlet-artikkel-show .byline .author h3 a:hover {
+    background: #49484c;
+    text-decoration: none
+}
+
+nav.sb-slidebar>ol>li>ol>li>a, nav.sb-slidebar>ol>li>ol>li>.portlet-artikkel-show .byline .author h3 a {
+    padding: 5px 40px;
+    font-size: 14px;
+    font-size: .875rem
+}
+
+nav.sb-slidebar>ol>li>ol>li>a:before, nav.sb-slidebar>ol>li>ol>li>.portlet-artikkel-show .byline .author h3 a:before {
+    font-weight: 700;
+    content: "- ";
+    color: #90cac3
+}
