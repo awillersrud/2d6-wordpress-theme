@@ -68,6 +68,7 @@ img.size-full {
 }
 img {
     height: auto !important;
+    width: auto !important;
     max-width: 100% !important;
     vertical-align: middle;
 }
@@ -82,6 +83,9 @@ h2 {
 a {
     text-decoration: none;
     color: #930000;
+}
+a img {
+ border:none;
 }
 .clearfix {
     clear: both;
@@ -151,7 +155,7 @@ footer {
 }
 .rode-linjer:before {
     padding-top: 1em;
-    padding-bottom: 0;
+    padding-bottom: 0.07em;
 }
 .rode-linjer:after {
     padding-top: 0;
@@ -187,6 +191,7 @@ footer {
 nav.sb-slidebar .menu-header img {
     padding-top: 13px;
     padding-bottom: 13px;
+    padding-right: 13px;
     padding-left: 10px;
 }
 .hamburger-meny {
@@ -228,7 +233,7 @@ nav.sb-slidebar .menu-header img {
 }
 
 .container-mork-graa-med-skyer {
-    color: #f3f3f3;
+    color: #000000;
     background-image: url(img/forside/neste-turnering-bakgrunn.jpg);
     background-size: 100% auto;
     display: block;

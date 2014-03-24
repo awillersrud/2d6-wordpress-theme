@@ -148,11 +148,13 @@ Man må kunne grunnreglene og normalt være 16 år eller eldre for deltakelse. <
 		<img class="forside-tds-hall-of-fame-logo" src="<?php bloginfo('template_directory'); ?>/img/hall-of-fame/header_image.png" alt="2d6 Hall of Fame">
 	    </a>
 	</div>
+	</div>
+	<div class="tds-padding-liten">
 	<p>I 2d6 Hall of Fame finner du alle hærene som har vunnet «Best Army» på en av våre turneringer. Les mer om hvordan kåringene foregår, de forskjellige male- og base-teknikkene benyttet, forskjellige enheter og modeller i hærene og mye, mye mer!</p>
+	</div>
 
 	<?php display_hall_of_fame_posts(1, false, true); ?>
 
-	</div>
     </div>
 </div>
 

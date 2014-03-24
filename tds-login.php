@@ -34,14 +34,20 @@ get_header(); ?>
 
 <div class="lys">
     <div class="tds-container">
-        <div class="tds-padding-liten-full">
-            <div class="tds-padding-stor">
-                <div class="morkere">
-                <div class="tds-padding-liten-full">
+	<div class="tds-padding-liten-full">
+	    <div class="tds-padding-stor">
+		<div class="morkere">
+		<div class="tds-padding-liten-full">
 
 <?php
+    $redirect = site_url( $_SERVER['REQUEST_URI'] );
+    $referrer = $_SERVER['HTTP_REFERER'];  // where did the post submission come from?
+    // if there's a valid referrer, and it's not the default log-in screen
+    if ( !empty($referrer) && !strstr($referrer,'wp-login')) {
+	$redirect = $referrer;
+    }
 $args = array(
-    'redirect'       => site_url( $_SERVER['REQUEST_URI'] ),
+    'redirect'	     => $redirect,
     'form_id' => 'loginform-tds',
     'label_username' => __( 'Brukernavn:' ),
     'label_password' => __( 'Passord:' ),
