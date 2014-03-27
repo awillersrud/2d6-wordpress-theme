@@ -1,6 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" content="HTML,CSS,XML,JavaScript">
     <title><?php (bloginfo('name') + wp_title()) ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
@@ -15,7 +16,7 @@
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="script" ></script>
     <![endif]-->
     <?php add_theme_support( 'admin-bar', array( 'callback' => '__return_false' ) ); ?>
     <?php wp_head(); ?>
@@ -31,10 +32,6 @@
           </li>
           <li role="menuitem" class="path">
               <a class="meny" href="<?php echo get_bloginfo('wpurl') . "/2d6-crusade" ?>">2d6 Crusade</a>
-              <ol role="menu" class="menu-level-2">
-                  <li role="menuitem"><a href="<?php echo get_bloginfo('wpurl') . "/2d6-crusade/regelpakke" ?>">Regelpakke</a>
-                  </li>
-              </ol>
           </li>
           <li role="menuitem" class="path">
               <a href="<?php echo get_bloginfo('wpurl') . "/halloffame"?>">Hall of Fame</a>

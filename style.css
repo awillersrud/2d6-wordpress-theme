@@ -253,6 +253,7 @@ nav.sb-slidebar .menu-header img {
     display: block;
     margin-right: auto;
     margin-left: auto;
+    max-width: 67% !important;
 }
 .forside-header {
     margin-top: 1em;
@@ -364,28 +365,65 @@ nav.sb-slidebar .menu-header img {
     display: inline-block;
     max-width: 225px;
 }
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 900px) and (min-width: 700px) {
     .tds-container {
-        width: 685px;
-    }
-    .tds-nav-toppmeny a.hjem {
-        clear: both;
-    }
-    .tds-nav-toppmeny a.meny {
-        float: left;
+        width: 700px !important;
     }
 }
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 699px) and (min-width: 540px) {
+    h1 {
+        font-size: 1.6em !important;
+    }
+    h2 {
+        font-size: 1.2em !important;
+    }
+    body {
+        font-size: 1em !important;
+    }
+    .forside-turneringskalender-label {
+        font-size: 1.4em !important;
+    }
+    .tds-padding-stor {
+        padding-left: 23px !important;
+        padding-right: 23px !important;
+    }
     .tds-container {
-        width: 535px;
+        width: 540px;
+    }
+}
+@media screen and (max-width: 539px) {
+    h1 {
+    font-size: 1.4em !important;
+}
+    h2 {
+    font-size: 1.2em !important;
+}
+    body {
+    font-size: 0.8em !important;
+}
+    .forside-turneringskalender-label {
+    font-size: 1.2em !important;
+}
+    .tds-padding-stor {
+    padding-left: 23px !important;
+    padding-right: 23px !important;
+}
+}
+@media screen and (max-width: 539px) and (min-width: 480px) {
+    .tds-container {
+        width: 480px;
+    }
+}
+@media screen and (max-width: 479px) {
+    .tds-container {
+        width: 100% !important;
     }
 }
 
-
-nav.sb-slidebar .menu-header img {
-    /*width: 34px*/
+nav.sb-slidebar {
+    font-size: 18px;
+    font-size: 1.000rem
 }
-
 nav.sb-slidebar ul, nav.sb-slidebar ol {
     list-style-type: none;
     margin: 0;
