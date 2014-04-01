@@ -1,23 +1,23 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8" content="HTML,CSS,XML,JavaScript">
+    <meta charset="utf-8" content="HTML,CSS,XML,JavaScript"></meta>
     <title><?php (bloginfo('name') + wp_title()) ?></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-    <!-- Le styles -->
-    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
-    <!-- Slidebars CSS -->
-    <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/slidebars/slidebars/0.9/slidebars.css">
-    <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/respond.min.js">
-
-    <link href="<?php bloginfo('stylesheet_url');?>" rel="stylesheet">
-    <link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/favicon-2.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"></meta>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="script" ></script>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css' />
+    <!-- Slidebars CSS -->
+    <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/slidebars/slidebars/0.9/slidebars.css" />
+    <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/respond.min.js">
+
+    <link href="<?php bloginfo('stylesheet_url');?>" rel="stylesheet" />
+    <link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/favicon-2.png" />
+
     <?php add_theme_support( 'admin-bar', array( 'callback' => '__return_false' ) ); ?>
     <?php wp_head(); ?>
 </head>

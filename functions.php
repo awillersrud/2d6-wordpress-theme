@@ -192,6 +192,7 @@ function display_paameldingskjema(WP_Error $errors = null, $first_name = null, $
                 tds_army_checkbox("Tomb Kings", $haer);
                 tds_army_checkbox("Vampire Counts", $haer);
                 tds_army_checkbox("Warriors of Chaos", $haer);
+		tds_army_checkbox("Wood Elves", $haer);
                 tds_army_checkbox("Vet ikke", $haer);
                 ?>
 
