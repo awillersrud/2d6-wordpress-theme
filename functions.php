@@ -3,32 +3,41 @@
 add_theme_support( 'admin-bar', array( 'callback' => '__return_false' ) );
 add_theme_support( 'post-thumbnails' );
 
-function display_hall_of_fame_posts($number_of_posts = 10, $full_post = false, $hall_of_fame_link = false) {
+function display_hall_of_fame_posts($number_of_posts = 10, $post_id = null, $full_post = false, $hall_of_fame_link = false) {
     rewind_posts();
-    query_posts('category_name=hall-of-fame&posts_per_page=' . $number_of_posts);
-    global $more;
-    $more = 0;
-    while (have_posts()) : the_post(); ?>
-    <div class="tds-hall-of-fame-post tds-padding-liten-full">
+    if ($post_id != null) {
+        query_posts('category_name=hall-of-fame&posts_per_page=5&p=' . $post_id);
+    } else {
+        query_posts('category_name=hall-of-fame&posts_per_page=' . $number_of_posts);
+    }
+    while (have_posts()) : the_post();
+    display_hall_of_fame_post($full_post, $hall_of_fame_link);
+    endwhile;
+}
 
-        <?php
-        if ($full_post) {
-            the_content('', true, '');
-        } else {
-            if ( has_post_thumbnail() ) {
-                the_post_thumbnail();
-            }
-            the_content('Les mer »');
-            if ($hall_of_fame_link) {?>
-                <a class="hoyre" href="<?php echo get_bloginfo('wpurl') . "/halloffame"?>">Til Hall of Fame »</a>
-            <?php
-            }
+function display_hall_of_fame_post($full_post = false, $hall_of_fame_link = false) {
+?>
+<div class="tds-hall-of-fame-post tds-padding-liten-full">
+
+    <?php
+    if ($full_post) {
+        the_content('', true, '');
+    } else {
+        if (has_post_thumbnail() ) {
+            the_post_thumbnail();
         }
-        ?>
-        <div class="clearfix" ></div>
-    </div>
-
-    <?php endwhile;
+        global $more;
+        $more = 0;
+        the_content('Les mer »');
+        if ($hall_of_fame_link) {?>
+            <a class="hoyre" href="<?php echo get_bloginfo('wpurl') . "/halloffame"?>">Til Hall of Fame »</a>
+            <?php
+        }
+    }
+    ?>
+    <div class="clearfix" ></div>
+</div>
+<?php
 }
 
 function paamelding() {
@@ -269,6 +278,40 @@ function display_deltager($indeks, Player $spiller=null) {
 </li>
     <?php
 }
+
+
+function display_resultater($turnering) {
+?>
+    <table>
+        <tr>
+            <th class="haandskrift rod-tekst">PLASSERING</th>
+            <th class="hovedkolonne haandskrift rod-tekst">DELTAGER</th>
+            <th class="haandskrift rod-tekst">POENG</th>
+            <th class="haandskrift rod-tekst">MALEPOENG</th>
+            <th class="haandskrift rod-tekst">TOTALT</th>
+        </tr>
+        <?php
+        $resultatliste = get_final_standing($turnering);
+
+        foreach ($resultatliste as $indeks=>$resultat) display_resultat($indeks + 1, $resultat);
+        ?>
+    </table>
+
+<?php
+}
+
+function display_resultat($plassering, $resultat) {
+?>
+    <tr>
+        <td class="haandskrift"><?php echo $plassering ?></td>
+        <td><strong></em><?php echo $resultat->player_name ?></strong></td>
+        <td><?php echo $resultat->battle_points ?></td>
+        <td>-</td>
+        <td><strong><?php echo $resultat->battle_points ?></strong></td>
+    </tr>
+<?php
+}
+
 
 add_filter('login_url', 'tds_login_url', 10, 2);
 function tds_login_url($login_url, $redirect) {

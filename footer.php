@@ -12,7 +12,6 @@
 <!-- Le javascript
 
 ================================================== -->
-<!-- jQuery -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
 <!-- Slidebars -->
@@ -37,6 +36,33 @@
     ga('create', 'UA-48955910-1', 'spillforeningen2d6.no');
     ga('send', 'pageview');
 
+</script>
+
+<div id="hidden-resizer" style="font-weight: bold; display: none;"></div>
+<script>
+    var resize = function(i, targetElement) {
+        var desired_width = $(targetElement).width();
+        var resizer = $("#hidden-resizer");
+        var size = parseInt($(targetElement).css("font-size"), 10);;
+
+        console.log(resizer);
+
+        resizer.css("font-size", size);
+        resizer.html($(targetElement).html());
+
+
+        console.log("Desired width: " + desired_width);
+        console.log("Resizer width: " + resizer.width());
+
+        while(resizer.width() > desired_width && size > 10) {
+            size--;
+            resizer.css("font-size", size);
+            console.log("Size: " + size);
+            console.log("Resizer width: " + resizer.width());
+        }
+
+        $(targetElement).css("font-size", size).html(resizer.html());
+    }
 </script>
 </body>
 </html>

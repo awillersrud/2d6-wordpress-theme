@@ -31,6 +31,7 @@ input {
     border: 2px solid #DFDFDF;
     border-radius: 2px;
     box-shadow: inset 3px 3px 3px #ccc;
+    box-sizing:border-box;
 }
 input[type="image"] {
     border: 0;
@@ -78,6 +79,8 @@ h1 {
     margin-bottom: 8px;
 }
 h2 {
+    margin-top: 0;
+    padding-top: 10px;
     font-size: 2em;
 }
 a {
@@ -150,15 +153,11 @@ footer {
     content: url('img/forside/horisontal-linje.png');
     overflow: hidden;
     display: block;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
 }
 .rode-linjer:before {
-    padding-top: 1em;
     padding-bottom: 0.07em;
 }
 .rode-linjer:after {
-    padding-top: 0;
     padding-bottom: 0.5em;
 }
 .hvit {
@@ -191,7 +190,7 @@ footer {
 nav.sb-slidebar .menu-header img {
     padding-top: 13px;
     padding-bottom: 13px;
-    padding-right: 13px;
+    padding-right: 30px;
     padding-left: 10px;
 }
 .hamburger-meny {
@@ -239,7 +238,7 @@ nav.sb-slidebar .menu-header img {
     display: block;
     width: 100%;
     background-repeat: repeat;
-    padding-bottom: 2em;
+    /*padding-bottom: 2em;*/
 }
 .send-paamelding {
     padding-top: 3em;
@@ -276,9 +275,14 @@ nav.sb-slidebar .menu-header img {
     font-weight: bold;
     padding-bottom: 0.3em;
 }
-.forside-turneringskalender table {
+table {
     width: 100%;
-
+}
+table th {
+    text-align: left;
+}
+table th.hovedkolonne, table td.hovedkolonne {
+    width: auto;
 }
 .forside-turneringskalender table:nth-child(1) {/*tr:first-child td {*/
     border-top: none;
@@ -365,9 +369,62 @@ nav.sb-slidebar .menu-header img {
     display: inline-block;
     max-width: 225px;
 }
+
+
+/* Resultatside */
+.topp3-bilde {
+    position:relative;
+    background: top center no-repeat;
+    background-image: url(img/turneringer/vinnere.png);
+    background-position:50% 0;
+    background-size: 100%;
+    height: 730px;
+}
+.topp3-bilde div span {
+    display:inline-block;
+    vertical-align:middle;
+}
+.topp3-bilde div {
+    text-align: center;
+    vertical-align: 50%;
+    position: absolute;
+    font-size: 34px;
+    font-weight: bold;
+    left: 93px;
+    height: 70px;
+    width: 520px;
+}
+.topp3-bilde div:nth-child(1) {
+    top: 255px;
+}
+.topp3-bilde div:nth-child(2) {
+    top: 373px;
+}
+.topp3-bilde div:nth-child(3) {
+    top: 486px;
+}
+
 @media screen and (max-width: 900px) and (min-width: 700px) {
     .tds-container {
         width: 700px !important;
+    }
+    .topp3-bilde {
+        height: 558px;
+    }
+    .topp3-bilde div {
+        height: 50px;
+        font-size: 30px;
+        left: 74px;
+        width: 406px;
+    }
+    .topp3-bilde div:nth-child(1) {
+        top: 197px;
+    }
+    .topp3-bilde div:nth-child(2) {
+        top: 286px;
+    }
+    .topp3-bilde div:nth-child(3) {
+        top: 373px;
     }
 }
 @media screen and (max-width: 699px) and (min-width: 540px) {
@@ -390,33 +447,105 @@ nav.sb-slidebar .menu-header img {
     .tds-container {
         width: 540px;
     }
+    .topp3-bilde {
+        height: 463px;
+    }
+    .topp3-bilde div {
+        height: 40px;
+        font-size: 26px;
+        left: 60px;
+        width: 331px;
+    }
+    .topp3-bilde div:nth-child(1) {
+        top: 163px;
+    }
+    .topp3-bilde div:nth-child(2) {
+        top: 237px;
+    }
+    .topp3-bilde div:nth-child(3) {
+        top: 311px;
+    }
 }
 @media screen and (max-width: 539px) {
     h1 {
-    font-size: 1.4em !important;
-}
+        font-size: 1.4em !important;
+    }
     h2 {
-    font-size: 1.2em !important;
-}
+        font-size: 1.2em !important;
+    }
     body {
-    font-size: 0.8em !important;
-}
+        font-size: 0.8em !important;
+    }
     .forside-turneringskalender-label {
-    font-size: 1.2em !important;
-}
+        font-size: 1.2em !important;
+    }
     .tds-padding-stor {
-    padding-left: 23px !important;
-    padding-right: 23px !important;
-}
+        padding-left: 23px !important;
+        padding-right: 23px !important;
+    }
+    .topp3-bilde {
+        height: 433px;
+    }
+    .topp3-bilde div {
+        height: 40px;
+        font-size: 24px;
+        left: 50px;
+        width: 291px;
+    }
+    .topp3-bilde div:nth-child(1) {
+        top: 142px;
+    }
+    .topp3-bilde div:nth-child(2) {
+        top: 205px;
+    }
+    .topp3-bilde div:nth-child(3) {
+        top: 268px;
+    }
 }
 @media screen and (max-width: 539px) and (min-width: 480px) {
     .tds-container {
         width: 480px;
     }
+    .topp3-bilde {
+        height: 433px;
+    }
+    .topp3-bilde div {
+        height: 40px;
+        font-size: 24px;
+        left: 50px;
+        width: 291px;
+    }
+    .topp3-bilde div:nth-child(1) {
+        top: 142px;
+    }
+    .topp3-bilde div:nth-child(2) {
+        top: 205px;
+    }
+    .topp3-bilde div:nth-child(3) {
+        top: 268px;
+    }
 }
 @media screen and (max-width: 479px) {
     .tds-container {
         width: 100% !important;
+    }
+    .topp3-bilde {
+        height: 433px;
+    }
+    .topp3-bilde div {
+        height: 40px;
+        font-size: 24px;
+        left: 50px;
+        width: 291px;
+    }
+    .topp3-bilde div:nth-child(1) {
+        top: 142px;
+    }
+    .topp3-bilde div:nth-child(2) {
+        top: 205px;
+    }
+    .topp3-bilde div:nth-child(3) {
+        top: 268px;
     }
 }
 
@@ -431,7 +560,7 @@ nav.sb-slidebar ul, nav.sb-slidebar ol {
 }
 
 nav.sb-slidebar>ol>li {
-    border-bottom: 1px solid #2e2d31
+    border-bottom: 1px solid #2e2d31;
 }
 
 nav.sb-slidebar ol a, nav.sb-slidebar ol .portlet-artikkel-show .byline .author h3 a {
