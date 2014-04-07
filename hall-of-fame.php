@@ -22,11 +22,13 @@ $header_image_url = get_bloginfo('template_directory') . "/img/hall-of-fame/head
 
 <div class="mork">
     <div class="tds-container">
+        <div class="tds-padding-liten">
         <?php if ( have_posts() ) : while ( have_posts() ) : the_post();
         the_content();
     endwhile; else: ?>
         <p>Sorry, no posts matched your criteria.</p>
         <?php endif; ?>
+        </div>
 
 
 <!--        <p>I 2d6 Hall of Fame finner du de hærene som har vunnet «Best Army» på en av 2d6 sine turneringer. Mange hærer holder et høyt nivå, men det er ikke dermed sagt at man må være verdens beste maler for å vinne. Ofte kan en godt gjennomført hær også hevde seg da alt fra baser til konverteringer til sammen kan danne et veldig godt helhetsinntrykk.-->
@@ -38,8 +40,10 @@ $header_image_url = get_bloginfo('template_directory') . "/img/hall-of-fame/head
 
 <div class="lys">
     <div class="tds-container">
+        <div class="tds-padding-liten">
         <h2 class="haandskrift rode-linjer">Vinnere «BEST ARMY»</h2>
         <?php display_hall_of_fame_posts(10); ?>
+        </div>
     </div>
 </div>
 <?php get_footer();?>

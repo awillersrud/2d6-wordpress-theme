@@ -395,13 +395,13 @@ table th.hovedkolonne, table td.hovedkolonne {
     width: 520px;
 }
 .topp3-bilde div:nth-child(1) {
-    top: 255px;
+    top: 261px;
 }
 .topp3-bilde div:nth-child(2) {
-    top: 373px;
+    top: 378px;
 }
 .topp3-bilde div:nth-child(3) {
-    top: 486px;
+    top: 492px;
 }
 
 @media screen and (max-width: 900px) and (min-width: 700px) {
@@ -466,7 +466,10 @@ table th.hovedkolonne, table td.hovedkolonne {
         top: 311px;
     }
 }
-@media screen and (max-width: 539px) {
+@media screen and (max-width: 539px) and (min-width: 481px) {
+    .tds-container {
+        width: 480px;
+    }
     h1 {
         font-size: 1.4em !important;
     }
@@ -492,20 +495,6 @@ table th.hovedkolonne, table td.hovedkolonne {
         left: 50px;
         width: 291px;
     }
-    .topp3-bilde div:nth-child(1) {
-        top: 142px;
-    }
-    .topp3-bilde div:nth-child(2) {
-        top: 205px;
-    }
-    .topp3-bilde div:nth-child(3) {
-        top: 268px;
-    }
-}
-@media screen and (max-width: 539px) and (min-width: 480px) {
-    .tds-container {
-        width: 480px;
-    }
     .topp3-bilde {
         height: 433px;
     }
@@ -526,11 +515,48 @@ table th.hovedkolonne, table td.hovedkolonne {
     }
 }
 @media screen and (max-width: 479px) {
+    .tds-padding-stor {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+@media screen and (max-width: 479px) and (min-width: 380px) {
     .tds-container {
-        width: 100% !important;
+        width: 380px !important;
     }
     .topp3-bilde {
-        height: 433px;
+        height: 348px;
+    }
+    .topp3-bilde div {
+        height: 40px;
+        font-size: 24px;
+        left: 50px;
+        width: 291px;
+    }
+    .topp3-bilde div:nth-child(1) {
+        top: 142px;
+    }
+    .topp3-bilde div:nth-child(2) {
+        top: 205px;
+    }
+    .topp3-bilde div:nth-child(3) {
+        top: 268px;
+    }
+}
+@media screen and (max-width: 379px) {
+    .tds-container {
+        width: 320px !important;
+    }
+    .tds-padding-stor {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .tds-padding-liten .tds-padding-liten {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    .topp3-bilde {
+        height: 348px;
     }
     .topp3-bilde div {
         height: 40px;
