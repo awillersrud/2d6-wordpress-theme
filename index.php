@@ -18,16 +18,9 @@
 	    <div class="container-mork-graa-med-skyer">
 		<div class="tds-padding-liten-topp tds-padding-liten-bunn">
 		    <div class="tds-padding-stor">
-			<img src="<?php bloginfo('template_directory'); ?>/img/forside/neste-turnering-overskrift.png"/>
-
-			<a href="<?php echo get_bloginfo('wpurl') . "/2d6-Crusade" ?>">
+			<a href="<?php echo get_bloginfo('wpurl') . "/crusade" ?>">
 			    <img src="<?php bloginfo('template_directory'); ?>/img/crusade/Crusade2014.png"/>
 			</a>
-
-			<div class="rod-knapp-container gaa-til-paamelding">
-			    <a href="<?php echo get_bloginfo('wpurl') . "/2d6-crusade" ?>" class="rod-knapp"><img
-				src="<?php bloginfo('template_directory'); ?>/img/forside/KnappPaamelding_Forside.png"/></a>
-			</div>
 
 			<div
 			    class="forside-neste-turnering-beskrivelse tds-padding-liten tds-padding-liten-topp tds-padding-liten-bunn">
@@ -40,16 +33,6 @@ Man må kunne grunnreglene og normalt være 16 år eller eldre for deltakelse. <
 			    <div class="forside-turneringskalender-label">TURNERINGSKALENDER:</div>
 
 			    <table>
-				<tr>
-				    <td class="forside-turneringskalender-turneringsnavn">2d6 Crusade</td>
-				    <td>Oslo</td>
-				    <td class="forside-turneringskalender-dato">05-06.04. 2014</td>
-				</tr>
-
-				<tr>
-				    <td class="forside-turneringskalender-separator" colspan="3"/>
-				</tr>
-
 				<tr>
 				    <td class="forside-turneringskalender-turneringsnavn">Warcon</td>
 				    <td>Trondheim</td>

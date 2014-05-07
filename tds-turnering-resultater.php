@@ -17,9 +17,11 @@ $turnering = get_tournament($turneringId);
         <div class="tds-padding-liten">
             <div class="container-mork-graa-med-skyer">
                 <div class="tds-padding-stor">
+                    <div class="tds-padding-liten-full">
 
                     <?php the_post_thumbnail(); ?>
 
+                    </div>
                 </div>
             </div>
         </div>
@@ -48,10 +50,23 @@ $turnering = get_tournament($turneringId);
             <div class="tds-padding-stor">
                 <div class="tds-padding-liten-full">
                     <div class="topp3-bilde">
-                        <div class="haandskrift vinner"><span>Team Odden</span></div>
-                        <div class="haandskrift vinner"><span>Vigo & friends</span></div>
-                        <div class="haandskrift vinner"><span>Team TBA</span></div>
-<!--                        <div class="haandskrift vinner"><span>Vigo & Tall dark and handsome</span></div>-->
+                        <div class="haandskrift vinner">
+                            <span>
+                                <?php
+                                $final_standing = get_final_standing($turnering);
+                                echo $final_standing[0]->player_name ?>
+                            </span>
+                        </div>
+                        <div class="haandskrift vinner">
+                            <span>
+                            <?php echo $final_standing[1]->player_name ?>
+                            </span>
+                        </div>
+                        <div class="haandskrift vinner">
+                            <span>
+                                <?php echo $final_standing[2]->player_name ?>
+                            </span>
+                        </div>
                     </div>
 
                     <h2 class="haandskrift rode-linjer">RESULTLISTE</h2>

@@ -282,7 +282,7 @@ function display_deltager($indeks, Player $spiller=null) {
 
 function display_resultater($turnering) {
 ?>
-    <table>
+    <table class="resultatliste">
         <tr>
             <th class="haandskrift rod-tekst">PLASSERING</th>
             <th class="hovedkolonne haandskrift rod-tekst">DELTAGER</th>
@@ -301,13 +301,24 @@ function display_resultater($turnering) {
 }
 
 function display_resultat($plassering, $resultat) {
+
+    $malepoeng = $resultat->painting_score;
+    if ($malepoeng == null) {
+        $malepoeng = "-";
+    }
+    $army = $resultat->army;
 ?>
     <tr>
         <td class="haandskrift"><?php echo $plassering ?></td>
-        <td><strong></em><?php echo $resultat->player_name ?></strong></td>
+        <td>
+            <strong>
+                <?php echo $resultat->player_name ?>
+            </strong>
+            <div><?php if ($army !=null) echo $army ?></div>
+        </td>
         <td><?php echo $resultat->battle_points ?></td>
-        <td>-</td>
-        <td><strong><?php echo $resultat->battle_points ?></strong></td>
+        <td><?php echo $malepoeng ?></td>
+        <td><strong><?php echo $resultat->total ?></strong></td>
     </tr>
 <?php
 }

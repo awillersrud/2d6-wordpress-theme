@@ -31,7 +31,7 @@
             <a href="<?php bloginfo('wpurl') ?>" >Forsiden</a>
           </li>
           <li role="menuitem" class="path">
-              <a class="meny" href="<?php echo get_bloginfo('wpurl') . "/2d6-crusade" ?>">2d6 Crusade</a>
+              <a class="meny" href="<?php echo get_bloginfo('wpurl') . "/crusade" ?>">Crusade</a>
           </li>
           <li role="menuitem" class="path">
               <a href="<?php echo get_bloginfo('wpurl') . "/halloffame"?>">Hall of Fame</a>

@@ -2,14 +2,25 @@
 /*
 Template Name: 2d6 Crusade
 */
-get_header(); ?>
+
+get_header();
+
+if (have_posts()) : while (have_posts()) : the_post();
+
+    $turneringId = get_post_meta(get_the_ID(), "TurneringId", true);
+    $turnering = get_tournament($turneringId);
+    ?>
 
 <div class="morkere">
     <div class="tds-container">
         <div class="tds-padding-liten">
             <div class="container-mork-graa-med-skyer">
                 <div class="tds-padding-stor">
-                    <img class="" src="<?php bloginfo('template_directory'); ?>/img/crusade/Crusade2014.png">
+                    <div class="tds-padding-liten-full">
+
+                        <?php the_post_thumbnail(); ?>
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -23,11 +34,7 @@ get_header(); ?>
 	<div class="tds-padding-liten">
 	    <div class="tds-padding-stor">
 		<div class="tds-padding-liten">
-		<?php if (have_posts()) : while (have_posts()) : the_post();
-		the_content();
-	    endwhile; else: ?>
-		<p>Sorry, no posts matched your criteria.</p>
-		<?php endif; ?>
+		    <?php the_content(); ?>
 		</div>
 	    </div>
 	</div>
@@ -40,6 +47,11 @@ get_header(); ?>
     <div class="tds-container">
 	<div class="tds-padding-liten">
 	    <div class="tds-padding-stor">
+
+
+            <?php
+            if (false) {
+            ?>
 		<div class="tds-padding-liten">
 			<h2 id="paamelding" class="haandskrift rode-linjer">PÅMELDING</h2>
 		</div>
@@ -51,6 +63,7 @@ get_header(); ?>
 
 		    </div>
 		</div>
+         <?php }   ?>
 
 
 		<div class="hvit">
@@ -67,5 +80,10 @@ get_header(); ?>
     </div>
 </div>
 
-
 <?php get_footer(); ?>
+
+<?php
+endwhile; else: ?>
+<p>Sorry, no posts matched your criteria.</p>
+<?php endif; ?>
+
