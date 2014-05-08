@@ -34,6 +34,9 @@
               <a class="meny" href="<?php echo get_bloginfo('wpurl') . "/crusade" ?>">Crusade</a>
           </li>
           <li role="menuitem" class="path">
+              <a class="meny" href="<?php echo get_bloginfo('wpurl') . "/conquest" ?>">Conquest</a>
+          </li>
+          <li role="menuitem" class="path">
               <a href="<?php echo get_bloginfo('wpurl') . "/halloffame"?>">Hall of Fame</a>
           </li>
           <li role="menuitem" class="path">

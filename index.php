@@ -18,15 +18,20 @@
 	    <div class="container-mork-graa-med-skyer">
 		<div class="tds-padding-liten-topp tds-padding-liten-bunn">
 		    <div class="tds-padding-stor">
-			<a href="<?php echo get_bloginfo('wpurl') . "/crusade" ?>">
-			    <img src="<?php bloginfo('template_directory'); ?>/img/crusade/Crusade2014.png"/>
+			<a href="<?php echo get_bloginfo('wpurl') . "/conquest" ?>">
+			    <img src="<?php bloginfo('template_directory'); ?>/img/turneringer/Conquest_Logo_Dato.png"/>
 			</a>
 
 			<div
 			    class="forside-neste-turnering-beskrivelse tds-padding-liten tds-padding-liten-topp tds-padding-liten-bunn">
-			    Crusade er 2d6 sin store vårturnering, og er også en av 2d6 sine største, årlige turneringer. Turneringen avholdes på Ulsrud videregående skole i Oslo, og er en turnering som passer for både ivrige hobby-entusiaster, dedikerte Warhammer-spillere, turneringsveteraner og nybegynnere til hobbyen. Turneringen spilles med 2400 poeng og ETC-regler. Eventuelle scenarioer finner dere i regelpakken.
+                Conquest er Spillforeningen 2d6 sin store sommerturnering. Turneringen avholdes på Ulsrud
 
-Man må kunne grunnreglene og normalt være 16 år eller eldre for deltakelse. </div>
+                videregående skole i Oslo, og er åpen for både nybegynnere og veteraner i turneringssammenheng.
+
+                Turneringen spilles med 2000 poeng og enkel komp. Man må kunne grunnreglene og normalt være
+
+                16 år eller eldre for å delta.
+			    </div>
 
 			<div
 			    class="forside-turneringskalender tds-padding-liten tds-padding-liten-topp tds-padding-liten-bunn">
@@ -34,9 +39,9 @@ Man må kunne grunnreglene og normalt være 16 år eller eldre for deltakelse. <
 
 			    <table>
 				<tr>
-				    <td class="forside-turneringskalender-turneringsnavn">Warcon</td>
-				    <td>Trondheim</td>
-				    <td class="forside-turneringskalender-dato">26-27.04. 2014</td>
+				    <td class="forside-turneringskalender-turneringsnavn">2d6 Conquest</td>
+				    <td>Oslo</td>
+				    <td class="forside-turneringskalender-dato">14-15.06.2014</td>
 				</tr>
 
 				<tr>
