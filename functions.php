@@ -40,42 +40,42 @@ function display_hall_of_fame_post($full_post = false, $hall_of_fame_link = fals
 <?php
 }
 
-function paamelding() {
+function paamelding($turnering) {
     $http_post = ('POST' == $_SERVER['REQUEST_METHOD']);
 
     if ( ! $http_post ) {
-	if (is_user_logged_in() && er_paameldt(wp_get_current_user()->ID, 1)) { ?>
-    <p><b>Du er allerede påmeldt!</b> Husk at påmelding er bindende, hvis du allikevel ikke kan delta setter vi pris på
-        å få beskjed på forhånd slik at vi kan beregne paringen best mulig. Send en mail til
-        <a href="mailto:turnering@spillforeningen2d6.no">turnering@spillforeningen2d6.no</a> for avmelding.</p>
+        if (is_user_logged_in() && er_paameldt(wp_get_current_user()->ID, $turnering->id)) { ?>
+        <p><b>Du er allerede påmeldt!</b> Husk at påmelding er bindende, hvis du allikevel ikke kan delta setter vi pris på
+            å få beskjed på forhånd slik at vi kan beregne paringen best mulig. Send en mail til
+            <a href="mailto:turnering@spillforeningen2d6.no">turnering@spillforeningen2d6.no</a> for avmelding.</p>
 
-	<?php
-	} else {
-	    display_paameldingskjema();
-	}
+        <?php
+        } else {
+            display_paameldingskjema($turnering);
+        }
     } else {
 
-	if (is_user_logged_in()) {
+        if (is_user_logged_in()) {
 
-	    if (!isset($_POST['haer'])) {
-		$errors = new WP_Error();
-		$errors->add('haer_error', '<span class="feilmelding">Hær er påkrevd</span><br />');
-		display_paameldingskjema($errors);
-	    } else {
-		$haer = $_POST['haer'];
-		$user = wp_get_current_user();
-		insert_player($user->first_name, $user->last_name, $user->user_email, $haer, $user->ID, 1);
-		bekreft_paamelding($user->user_email);
-	    }
+            if (!isset($_POST['haer'])) {
+                $errors = new WP_Error();
+                $errors->add('haer_error', '<span class="feilmelding">Hær er påkrevd</span><br />');
+                display_paameldingskjema($turnering, $errors);
+            } else {
+                $haer = $_POST['haer'];
+                $user = wp_get_current_user();
+                insert_player($user->first_name, $user->last_name, $user->user_email, $haer, $user->ID, $turnering->id);
+                bekreft_paamelding($user->user_email);
+            }
 
-	} else {
+        } else {
 
-	    registrer_paamelding_uten_bruker();
-	}
+            registrer_paamelding_uten_bruker($turnering);
+        }
     }
 }
 
-function registrer_paamelding_uten_bruker()
+function registrer_paamelding_uten_bruker($turnering)
 {
     $errors = new WP_Error();
 
@@ -113,20 +113,20 @@ function registrer_paamelding_uten_bruker()
             $errors = register_new_user($brukernavn, $epost);
             if (!is_wp_error($errors)) {
                 $ny_bruker_id = get_user_by('email', $epost)->ID;
-                insert_player($fornavn, $etternavn, $epost, $haer, $ny_bruker_id, 1);
+                insert_player($fornavn, $etternavn, $epost, $haer, $ny_bruker_id, $turnering->id);
 
                 bekreft_paamelding($epost, $ny_bruker_id);
             } else {
-                display_paameldingskjema($errors, $fornavn, $etternavn, $epost, $brukernavn, $haer);
+                display_paameldingskjema($turnering, $errors, $fornavn, $etternavn, $epost, $brukernavn, $haer);
             }
         } else {
-            insert_player($fornavn, $etternavn, $epost, $haer, $ny_bruker_id, 1);
+            insert_player($fornavn, $etternavn, $epost, $haer, $ny_bruker_id, $turnering->id);
 
             bekreft_paamelding($epost, $ny_bruker_id);
         }
 
     } else {
-        display_paameldingskjema($errors, $fornavn, $etternavn, $epost, $brukernavn, $haer);
+        display_paameldingskjema($turnering, $errors, $fornavn, $etternavn, $epost, $brukernavn, $haer);
     }
 }
 
@@ -140,18 +140,21 @@ function bekreft_paamelding($epost, $ny_bruker_id = null) {
     <?php }
 }
 
-function display_paameldingskjema(WP_Error $errors = null, $first_name = null, $last_name = null, $email = null, $username = null, $haer = null) {
+function display_paameldingskjema($turnering, WP_Error $errors = null, $first_name = null, $last_name = null, $email = null, $username = null, $haer = null) {
 
     $errors = $errors == null ? new WP_Error() : $errors;
     ?>
         <form action="#paamelding" method="POST">
-            <span>Fyll ut feltene under for å melde deg på til 2d6 Crusade 2014. Påmelding til 2d6 Crusade er bindende. Hvis du allikevel finner ut at du ikke får deltatt etter at du er påmeldt, gi beskjed til turnering@spillforeningen2d6.no. Aldersgrense for å delta er 16 år.</span>
+            <span>Fyll ut feltene under for å melde deg på til <?php echo $turnering->name ?>. Påmelding til
+                <?php echo $turnering->name ?> er bindende. Hvis du allikevel finner ut at du ikke får deltatt etter at
+                du er påmeldt, gi beskjed til turnering@spillforeningen2d6.no. Aldersgrense for å delta er 16 år.</span>
 
             <?php if (is_user_logged_in()) {
             ?>
                 <p>Du er logget inn som <?php echo wp_get_current_user()->display_name ?></p>
 
             <?php } else { ?>
+                <p>Allerede registrert som bruker? <a href="<?php echo wp_login_url() ?>">Logg inn »</a></p>
                 <p>
                     <label for="first_name">Fornavn*:<br /><?php echo $errors->get_error_message("first_name_error") ?>
                         <input type="text" name="first_name" id="first_name" class="text" value="<?php echo esc_attr(stripslashes($first_name)); ?>" />
@@ -233,19 +236,18 @@ function tds_army_checkbox($army, $haer) {
 
 
 
-function tds_deltagerliste() {
+function tds_deltagerliste($turnering) {
 
-    $turnering = get_tournament(1);
+    $spillere = get_tournament_players($turnering->id);
 
-    $spillere = get_tournament_players(1);
+    $split_indeks = (count($spillere) + 1) / 2;
+    //$split_indeks = $turnering->max_players / 2;
 
-    $split_indeks = $turnering->max_players / 2;
+    //$tom_deltagerliste = array_fill(0, $turnering->max_players, null);
 
-    $tom_deltagerliste = array_fill(0, $turnering->max_players, null);
+    //$full_deltagerliste = array_replace($tom_deltagerliste, $spillere);
 
-    $full_deltagerliste = array_replace($tom_deltagerliste, $spillere);
-
-    $spillere_kolonner = array_chunk($full_deltagerliste, $split_indeks, true);
+    $spillere_kolonner = array_chunk($spillere, $split_indeks, true);
 
     $kolonne1 = $spillere_kolonner[0];
     $kolonne2 = $spillere_kolonner[1];

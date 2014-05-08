@@ -8,6 +8,7 @@ get_header();
 if (have_posts()) : while (have_posts()) : the_post();
 
     $turneringId = get_post_meta(get_the_ID(), "TurneringId", true);
+    $paameldingAapen = strcasecmp("TRUE", get_post_meta(get_the_ID(), "ÅpentForPåmelding", true)) == 0;
     $turnering = get_tournament($turneringId);
     ?>
 
@@ -50,7 +51,7 @@ if (have_posts()) : while (have_posts()) : the_post();
 
 
             <?php
-            if (false) {
+            if ($paameldingAapen) {
             ?>
 		<div class="tds-padding-liten">
 			<h2 id="paamelding" class="haandskrift rode-linjer">PÅMELDING</h2>
@@ -59,7 +60,7 @@ if (have_posts()) : while (have_posts()) : the_post();
 		<div class="morkere">
 		    <div class="tds-padding-liten-full">
 
-		    <?php paamelding() ?>
+		    <?php paamelding($turnering) ?>
 
 		    </div>
 		</div>
@@ -71,7 +72,7 @@ if (have_posts()) : while (have_posts()) : the_post();
 			<h3 class="rod-tekst">DELTAGERE OG HÆRER:</h3>
 
 			<div>
-			    <?php tds_deltagerliste(); ?>
+			    <?php tds_deltagerliste($turnering); ?>
 			</div>
 		    </div>
 		</div>

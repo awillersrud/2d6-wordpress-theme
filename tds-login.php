@@ -57,6 +57,7 @@ $args = array(
 );
 wp_login_form( $args );
 ?>
+            <a href="<?php echo esc_url( wp_lostpassword_url() ); ?>"><?php _e( 'Glemt passord?' ); ?></a>
 
             </div>
         </div>
