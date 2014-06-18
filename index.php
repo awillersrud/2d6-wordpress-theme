@@ -18,9 +18,16 @@
 	    <div class="container-mork-graa-med-skyer">
 		<div class="tds-padding-liten-topp tds-padding-liten-bunn">
 		    <div class="tds-padding-stor">
+			<!--<img src="<?php bloginfo('template_directory'); ?>/img/forside/neste-turnering-overskrift.png"/>-->
 			<a href="<?php echo get_bloginfo('wpurl') . "/conquest" ?>">
 			    <img src="<?php bloginfo('template_directory'); ?>/img/turneringer/Conquest_Logo_Dato.png"/>
 			</a>
+            <!--
+			<div class="rod-knapp-container gaa-til-paamelding">
+                            <a href="<?php echo get_bloginfo('wpurl') . "/conquest" ?>" class="rod-knapp"><img
+                                src="<?php bloginfo('template_directory'); ?>/img/forside/KnappPaamelding_Forside.png"/></a>
+                        </div>
+            -->
 
 			<div
 			    class="forside-neste-turnering-beskrivelse tds-padding-liten tds-padding-liten-topp tds-padding-liten-bunn">
@@ -38,16 +45,6 @@
 			    <div class="forside-turneringskalender-label">TURNERINGSKALENDER:</div>
 
 			    <table>
-				<tr>
-				    <td class="forside-turneringskalender-turneringsnavn">2d6 Conquest</td>
-				    <td>Oslo</td>
-				    <td class="forside-turneringskalender-dato">14-15.06.2014</td>
-				</tr>
-
-				<tr>
-				    <td class="forside-turneringskalender-separator" colspan="3"/>
-				</tr>
-
 				<tr>
 				    <td class="forside-turneringskalender-turneringsnavn">Indian Summer</td>
 				    <td>Gjøvik</td>
