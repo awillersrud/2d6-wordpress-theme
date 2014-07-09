@@ -136,6 +136,9 @@ hr.rod-linje {
     color: red;
     font-weight: bold;
 }
+.paameldings_melding, .paameldings_melding a {
+    color: #EE0000 !important;
+}
 footer {
     background-color: #4c4b4f;
     min-height: 328px;

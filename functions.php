@@ -47,7 +47,7 @@ function paamelding($turnering) {
         if (is_user_logged_in() && er_paameldt(wp_get_current_user()->ID, $turnering->id)) { ?>
         <p><b>Du er allerede påmeldt!</b> Husk at påmelding er bindende, hvis du allikevel ikke kan delta setter vi pris på
             å få beskjed på forhånd slik at vi kan beregne paringen best mulig. Send en mail til
-            <a href="mailto:turnering@spillforeningen2d6.no">turnering@spillforeningen2d6.no</a> for avmelding.</p>
+            <?php display_contact_email_link($turnering) ?> for avmelding.</p>
 
         <?php
         } else {
@@ -73,6 +73,13 @@ function paamelding($turnering) {
             registrer_paamelding_uten_bruker($turnering);
         }
     }
+}
+
+function display_contact_email_link($turnering) {
+    $contact_email = $turnering->contact_email == null ? "turnering@spillforeningen2d6.no" : $turnering->contact_email
+    ?>
+    <a href="mailto:<?php echo $contact_email?>"><?php echo $contact_email?></a>
+    <?php
 }
 
 function registrer_paamelding_uten_bruker($turnering)
@@ -143,11 +150,12 @@ function bekreft_paamelding($epost, $ny_bruker_id = null) {
 function display_paameldingskjema($turnering, WP_Error $errors = null, $first_name = null, $last_name = null, $email = null, $username = null, $haer = null) {
 
     $errors = $errors == null ? new WP_Error() : $errors;
+
     ?>
         <form action="#paamelding" method="POST">
             <span>Fyll ut feltene under for å melde deg på til <?php echo $turnering->name ?>. Påmelding til
                 <?php echo $turnering->name ?> er bindende. Hvis du allikevel finner ut at du ikke får deltatt etter at
-                du er påmeldt, gi beskjed til turnering@spillforeningen2d6.no. Aldersgrense for å delta er 16 år.</span>
+                du er påmeldt, gi beskjed til <?php display_contact_email_link($turnering)?></span>
 
             <?php if (is_user_logged_in()) {
             ?>
@@ -184,6 +192,9 @@ function display_paameldingskjema($turnering, WP_Error $errors = null, $first_na
             <p>
                 <span>Kryss av for hvilken hær du skal spille*:</span>
                 <br /><?php echo $errors->get_error_message("haer_error") ?>
+                <?php if ($turnering->registration_notice != null) { ?>
+                    <div class="paameldings_melding"><?php echo $turnering->registration_notice ?></div>
+                <?php } ?>
             </p>
 
             <div>
