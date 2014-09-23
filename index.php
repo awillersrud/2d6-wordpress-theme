@@ -46,24 +46,6 @@
 
 			    <table>
 				<tr>
-				    <td class="forside-turneringskalender-turneringsnavn">Indian Summer</td>
-				    <td>Gjøvik</td>
-				    <td class="forside-turneringskalender-dato">02-03.08. 2014</td>
-				</tr>
-
-				<tr>
-				    <td class="forside-turneringskalender-separator" colspan="3"/>
-				</tr>
-				<tr>
-				    <td class="forside-turneringskalender-turneringsnavn">Invasion</td>
-				    <td>Kristiansand</td>
-				    <td class="forside-turneringskalender-dato">12-14.09. 2014</td>
-				</tr>
-
-				<tr>
-				    <td class="forside-turneringskalender-separator" colspan="3"/>
-				</tr>
-				<tr>
 				    <td class="forside-turneringskalender-turneringsnavn">NM i WFB</td>
 				    <td>Oslo</td>
 				    <td class="forside-turneringskalender-dato">11-12.10. 2014</td>
