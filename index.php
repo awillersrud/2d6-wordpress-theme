@@ -40,45 +40,7 @@
                 16 år eller eldre for å delta.
 			    </div>
 
-			<div
-			    class="forside-turneringskalender tds-padding-liten tds-padding-liten-topp tds-padding-liten-bunn">
-			    <div class="forside-turneringskalender-label">TURNERINGSKALENDER:</div>
-
-			    <table>
-				<tr>
-				    <td class="forside-turneringskalender-turneringsnavn">NM i WFB</td>
-				    <td>Oslo</td>
-				    <td class="forside-turneringskalender-dato">11-12.10. 2014</td>
-				</tr>
-				<tr>
-				    <td class="forside-turneringskalender-separator" colspan="3"/>
-				</tr>
-
-				<tr>
-				    <td class="forside-turneringskalender-turneringsnavn">Hexcon</td>
-				    <td>Trondheim</td>
-				    <td class="forside-turneringskalender-dato">31.10-02.11. 2014</td>
-				</tr>
-
-				<tr>
-				    <td class="forside-turneringskalender-separator" colspan="3"/>
-				</tr>
-
-				<tr>
-				    <td class="forside-turneringskalender-turneringsnavn">Dark Stormy Knights (DSK)</td>
-				    <td>Bergen</td>
-				    <td class="forside-turneringskalender-dato">November 2014</td>
-				</tr>
-				<tr>
-				    <td class="forside-turneringskalender-separator" colspan="3"/>
-				</tr>
-				<tr>
-				    <td class="forside-turneringskalender-turneringsnavn">2d6 Challenge</td>
-				    <td>Oslo</td>
-				    <td class="forside-turneringskalender-dato">November 2014</td>
-				</tr>
-			    </table>
-			</div>
+			<?php display_turneringskalender(); ?>
 		    </div>
 		</div>
 	    </div>
@@ -126,3 +88,34 @@
 </div>
 
 <?php get_footer(); ?>
+
+<?php
+
+function display_turneringskalender() {
+    $tournaments = get_tournaments_for_calendar();
+    $len = count($tournaments)
+?>
+<div
+    class="forside-turneringskalender tds-padding-liten tds-padding-liten-topp tds-padding-liten-bunn">
+    <div class="forside-turneringskalender-label">TURNERINGSKALENDER:</div>
+
+    <table>
+        <?php foreach ($tournaments as $index=>$tournament) { ?>
+        <tr>
+            <td class="forside-turneringskalender-turneringsnavn"><?php echo $tournament->name ?></td>
+            <td>Oslo</td>
+            <td class="forside-turneringskalender-dato"><?php echo $tournament->date_string() ?></td>
+        </tr>
+        <?php if ($index < $len - 1) {?>
+        <tr>
+            <td class="forside-turneringskalender-separator" colspan="3"/>
+        </tr>
+        <?php }
+        }
+        ?>
+
+    </table>
+</div>
+<?php
+}
+?>

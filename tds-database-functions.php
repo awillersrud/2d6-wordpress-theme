@@ -5,8 +5,13 @@
 
 include 'tds-database-base-custom-data.php';
 
-global $tds_tournament_db_version;
-$tds_tournament_db_version = "0.1.3";
+global $tds_db_data_format;
+$tds_db_data_format = 'Y-m-d';
+
+function parse_date($dateString) {
+    global $tds_db_data_format;
+    return (object)date_parse_from_format($tds_db_data_format, $dateString);
+}
 
 class Table extends Base_Custom_Data {
     public function __construct($tableName)
@@ -39,6 +44,7 @@ class Tournament {
     public $max_players;
     public $contact_email;
     public $registration_notice;
+    public $tournament_calendar_text;
     public function to_insert_array() {
         return array(
             'tournament_name' => $this->name,
@@ -47,8 +53,18 @@ class Tournament {
             'to_date' => $this->to,
             'max_players' => $this->max_players,
             'contact_email' => $this->contact_email,
-            'registration_notice' => $this->registration_notice
+            'registration_notice' => $this->registration_notice,
+            'tournament_calendar_text' => $this->tournament_calendar_text
         );
+    }
+    public function date_string() {
+        if ($this->tournament_calendar_text) return $this->tournament_calendar_text;
+        $fromDate = parse_date($this->from);
+        $toDate = parse_date($this->to);
+        if ($fromDate->month != $toDate->month)
+            return $fromDate->day . "." . $fromDate->month . " - " . $toDate->day . "." . $toDate->month . "." . $toDate->year;
+        else
+            return $fromDate->day . " - " . $toDate->day . "." . $toDate->month . "." . $toDate->year;
     }
     public static function from_db_array($db_array) {
         $tournament = new Tournament();
@@ -60,6 +76,7 @@ class Tournament {
         $tournament->max_players = $db_array["max_players"];
         $tournament->contact_email = $db_array["contact_email"];
         $tournament->registration_notice = $db_array["registration_notice"];
+        $tournament->tournament_calendar_text = $db_array["tournament_calendar_text"];
         return $tournament;
     }
 }
@@ -155,9 +172,13 @@ function get_tournament($tournament_id) {
     return Tournament::from_db_array($row);
 }
 
-function get_tournaments() {
-    global $wpdb;
-    $tournament_db_arrays = $wpdb->get_results("SELECT * FROM " . Tournament::table_name(), ARRAY_A);
+function get_tournaments_for_calendar() {
+    global $wpdb, $tds_db_data_format;
+    $tournament_db_arrays = $wpdb->get_results(
+        "SELECT * FROM " . Tournament::table_name() .
+        " WHERE TO_DATE >= '" . date($tds_db_data_format) . "' OR" .
+        " (TO_DATE IS NULL AND TOURNAMENT_CALENDAR_TEXT IS NOT NULL)" .
+        " ORDER BY TO_DATE DESC", ARRAY_A);
 
     $result = array();
     foreach ($tournament_db_arrays as $db_array ) {
