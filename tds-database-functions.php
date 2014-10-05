@@ -178,7 +178,7 @@ function get_tournaments_for_calendar() {
         "SELECT * FROM " . Tournament::table_name() .
         " WHERE TO_DATE >= '" . date($tds_db_data_format) . "' OR" .
         " (TO_DATE IS NULL AND TOURNAMENT_CALENDAR_TEXT IS NOT NULL)" .
-        " ORDER BY TO_DATE DESC", ARRAY_A);
+        " ORDER BY TOURNAMENT_CALENDAR_TEXT, TO_DATE", ARRAY_A);
 
     $result = array();
     foreach ($tournament_db_arrays as $db_array ) {
