@@ -18,6 +18,7 @@
     <link href="<?php bloginfo('stylesheet_url');?>" rel="stylesheet" />
     <link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/favicon-2.png" />
 
+    <?php require_once('tds-database-functions.php'); ?>
     <?php add_theme_support( 'admin-bar', array( 'callback' => '__return_false' ) ); ?>
     <?php wp_head(); ?>
 </head>
