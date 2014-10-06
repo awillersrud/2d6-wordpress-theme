@@ -19,25 +19,25 @@
 		<div class="tds-padding-liten-topp tds-padding-liten-bunn">
 		    <div class="tds-padding-stor">
 			<!--<img src="<?php bloginfo('template_directory'); ?>/img/forside/neste-turnering-overskrift.png"/>-->
-			<a href="<?php echo get_bloginfo('wpurl') . "/conquest" ?>">
-			    <img src="<?php bloginfo('template_directory'); ?>/img/turneringer/Conquest_Logo_Dato.png"/>
+			<a href="<?php echo get_bloginfo('wpurl') . "/challenge" ?>">
+			    <img src="<?php bloginfo('template_directory'); ?>/img/turneringer/Challenge_Logo_2014.png"/>
 			</a>
-            <!--
+
 			<div class="rod-knapp-container gaa-til-paamelding">
-                            <a href="<?php echo get_bloginfo('wpurl') . "/conquest" ?>" class="rod-knapp"><img
+                            <a href="<?php echo get_bloginfo('wpurl') . "/challenge" ?>" class="rod-knapp"><img
                                 src="<?php bloginfo('template_directory'); ?>/img/forside/KnappPaamelding_Forside.png"/></a>
                         </div>
-            -->
+
 
 			<div
 			    class="forside-neste-turnering-beskrivelse tds-padding-liten tds-padding-liten-topp tds-padding-liten-bunn">
-                Conquest er Spillforeningen 2d6 sin store sommerturnering. Turneringen avholdes på Ulsrud
+                Challenge er Spillforeningen 2d6 sin store høstturnering. Turneringen avholdes på Ulsrud
 
                 videregående skole i Oslo, og er åpen for både nybegynnere og veteraner i turneringssammenheng.
 
-                Turneringen spilles med 2000 poeng og enkel komp. Man må kunne grunnreglene og normalt være
+                Turneringen spilles med komp fra den legendariske Købenshavnsturneringen Giant Fanatic.
 
-                16 år eller eldre for å delta.
+                Man må kunne grunnreglene og normalt være 16 år eller eldre for å delta.
 			    </div>
 
 			<?php display_turneringskalender(); ?>
