@@ -389,3 +389,11 @@ function tds_user_register ($user_id) {
     if ( isset( $_POST['last_name'] ) )
         update_user_meta($user_id, 'last_name', $_POST['last_name']);
 }
+
+if(function_exists('add_db_table_editor')) {
+
+    add_db_table_editor(array('title'=>'Spillere','table'=>'wp_player', 'sql'=>'SELECT * FROM wp_player ORDER BY tournament_id desc, id asc'));
+
+    add_db_table_editor(array( 'title'=>'Turneringer', 'table'=>'wp_tournament', 'sql'=>'SELECT * FROM wp_tournament ORDER BY id DESC' ));
+
+}
