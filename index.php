@@ -1,4 +1,7 @@
-<?php get_header(); ?>
+<?php get_header();
+
+$turnering = get_featured_tournament();
+?>
 
 
 <div class="tds-container hvit forside-header" xmlns="http://www.w3.org/1999/html">
@@ -19,26 +22,21 @@
 		<div class="tds-padding-liten-topp tds-padding-liten-bunn">
 		    <div class="tds-padding-stor">
 			<!--<img src="<?php bloginfo('template_directory'); ?>/img/forside/neste-turnering-overskrift.png"/>-->
-			<a href="<?php echo get_bloginfo('wpurl') . "/challenge" ?>">
-			    <img src="<?php bloginfo('template_directory'); ?>/img/turneringer/Challenge_Logo_2014.png"/>
+			<a href="<?php echo $turnering->getUrl() ?>">
+			    <img src="<?php bloginfo('template_directory'); echo $turnering->logo_path; ?>"/>
 			</a>
 
+            <?php if ($turnering->open_for_registration) { ?>
 			<div class="rod-knapp-container gaa-til-paamelding">
-                            <a href="<?php echo get_bloginfo('wpurl') . "/challenge" ?>" class="rod-knapp"><img
-                                src="<?php bloginfo('template_directory'); ?>/img/forside/KnappPaamelding_Forside.png"/></a>
-                        </div>
+                <a href="<?php echo $turnering->getUrl() ?>" class="rod-knapp"><img
+                    src="<?php bloginfo('template_directory'); ?>/img/forside/KnappPaamelding_Forside.png"/></a>
+            </div>
+            <?php } ?>
 
 
-			<div
-			    class="forside-neste-turnering-beskrivelse tds-padding-liten tds-padding-liten-topp tds-padding-liten-bunn">
-                Challenge er Spillforeningen 2d6 sin store høstturnering. Turneringen avholdes på Ulsrud
-
-                videregående skole i Oslo, og er åpen for både nybegynnere og veteraner i turneringssammenheng.
-
-                Turneringen spilles med komp fra den legendariske Købenshavnsturneringen Giant Fanatic.
-
-                Man må kunne grunnreglene og normalt være 16 år eller eldre for å delta.
-			    </div>
+			<div class="forside-neste-turnering-beskrivelse tds-padding-liten tds-padding-liten-topp tds-padding-liten-bunn">
+                <?php echo $turnering->teaser_text ?>
+    	    </div>
 
 			<?php display_turneringskalender(); ?>
 		    </div>
@@ -102,8 +100,14 @@ function display_turneringskalender() {
     <table>
         <?php foreach ($tournaments as $index=>$tournament) { ?>
         <tr>
-            <td class="forside-turneringskalender-turneringsnavn"><?php echo $tournament->name ?></td>
-            <td>Oslo</td>
+            <td class="forside-turneringskalender-turneringsnavn">
+                <?php if ($tournament->getUrl() != null) { ?>
+                    <a href="<?php echo $tournament->getUrl() ?>"><?php echo $tournament->name ?></a>
+                <?php } else { ?>
+                    <?php echo $tournament->name ?>
+                <?php } ?>
+            </td>
+            <td><?php echo $tournament->location ?></td>
             <td class="forside-turneringskalender-dato"><?php echo $tournament->date_string() ?></td>
         </tr>
         <?php if ($index < $len - 1) {?>

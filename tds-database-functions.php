@@ -45,6 +45,11 @@ class Tournament {
     public $contact_email;
     public $registration_notice;
     public $tournament_calendar_text;
+    public $logo_path;
+    public $open_for_registration;
+    public $featured;
+    public $url;
+    public $teaser_text;
     public function to_insert_array() {
         return array(
             'tournament_name' => $this->name,
@@ -54,7 +59,12 @@ class Tournament {
             'max_players' => $this->max_players,
             'contact_email' => $this->contact_email,
             'registration_notice' => $this->registration_notice,
-            'tournament_calendar_text' => $this->tournament_calendar_text
+            'tournament_calendar_text' => $this->tournament_calendar_text,
+            'logo_path' => $this->logo_path,
+            'open_for_registration' => $this->open_for_registration,
+            'featured' => $this->featured,
+            'url' => $this->url,
+            'teaser_text' => $this->teaser_text
         );
     }
     public function date_string() {
@@ -65,6 +75,16 @@ class Tournament {
             return $fromDate->day . "." . $fromDate->month . " - " . $toDate->day . "." . $toDate->month . "." . $toDate->year;
         else
             return $fromDate->day . " - " . $toDate->day . "." . $toDate->month . "." . $toDate->year;
+    }
+    public function getUrl() {
+        if ($this->url == null) {
+            return null;
+        }
+        if (startsWith($this->url, "/") ) {
+            return get_bloginfo('wpurl') . $this->url;
+        } else {
+            return $this->url;
+        }
     }
     public static function from_db_array($db_array) {
         $tournament = new Tournament();
@@ -77,8 +97,18 @@ class Tournament {
         $tournament->contact_email = $db_array["contact_email"];
         $tournament->registration_notice = $db_array["registration_notice"];
         $tournament->tournament_calendar_text = $db_array["tournament_calendar_text"];
+        $tournament->logo_path = $db_array["logo_path"];
+        $tournament->open_for_registration = $db_array["open_for_registration"];
+        $tournament->featured = $db_array["featured"];
+        $tournament->url = $db_array["url"];
+        $tournament->teaser_text = $db_array["teaser_text"];
         return $tournament;
     }
+}
+
+function startsWith($haystack, $needle) {
+    $length = strlen($needle);
+    return (substr($haystack, 0, $length) === $needle);
 }
 
 class Player {
@@ -172,6 +202,14 @@ function get_tournament($tournament_id) {
     return Tournament::from_db_array($row);
 }
 
+function get_featured_tournament() {
+    global $wpdb;
+    $query = "SELECT * FROM " . Tournament::table_name() . " WHERE featured = 1 order by to_date desc";
+    $row = $wpdb->get_row($query, ARRAY_A);
+
+    return Tournament::from_db_array($row);
+}
+
 function get_tournaments_for_calendar() {
     global $wpdb, $tds_db_data_format;
     $tournament_db_arrays = $wpdb->get_results(
@@ -231,7 +269,7 @@ function get_final_standing(Tournament $tournament) {
               battle_points + painting_score as total, army
               from wp_player p
               where p.tournament_id = $tournament->id
-              order by (battle_points + ifnull(painting_score,0)) desc, battle_points desc";
+              order by (battle_points + ifnull(painting_score,0)) desc, victory_points desc, battle_points desc";
 
     return $wpdb->get_results($query);
 }

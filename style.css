@@ -302,8 +302,9 @@ table th.hovedkolonne, table td.hovedkolonne {
     padding-top: 2px;
     padding-bottom: 2px;
 }
-.forside-turneringskalender-turneringsnavn {
+.forside-turneringskalender-turneringsnavn, .forside-turneringskalender-turneringsnavn a {
     font-weight: bold;
+    color: #000000;
 }
 .forside-turneringskalender-dato {
     text-align: right;
