@@ -301,6 +301,7 @@ function display_resultater($turnering) {
             <th class="hovedkolonne haandskrift rod-tekst">DELTAGER</th>
             <th class="haandskrift rod-tekst">POENG</th>
             <th class="haandskrift rod-tekst">MALEPOENG</th>
+            <th class="haandskrift rod-tekst">VP</th>
             <th class="haandskrift rod-tekst">TOTALT</th>
         </tr>
         <?php
@@ -331,6 +332,7 @@ function display_resultat($plassering, $resultat) {
         </td>
         <td><?php echo $resultat->battle_points ?></td>
         <td><?php echo $malepoeng ?></td>
+        <td><?php echo $resultat->victory_points ?></td>
         <td><strong><?php echo $resultat->total ?></strong></td>
     </tr>
 <?php

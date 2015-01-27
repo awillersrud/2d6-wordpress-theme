@@ -265,7 +265,7 @@ function insert_tournament(Tournament $tournament) {
 function get_final_standing(Tournament $tournament) {
     global $wpdb;
 
-    $query = "select concat(p.first_name, ' ', ifnull(last_name, '')) as player_name, battle_points, painting_score,
+    $query = "select concat(p.first_name, ' ', ifnull(last_name, '')) as player_name, battle_points, victory_points, painting_score,
               battle_points + painting_score as total, army
               from wp_player p
               where p.tournament_id = $tournament->id
