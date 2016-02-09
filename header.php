@@ -33,9 +33,17 @@
           </li>
           <li role="menuitem" class="path">
               <a class="meny" href="<?php echo get_bloginfo('wpurl') . "/crusade" ?>">Crusade</a>
+              <ol role="menu" class="menu-level-2">
+                  <li role="menuitem"><a href="<?php echo get_bloginfo('wpurl') . "/crusade/crusade-2014/" ?>">Crusade 2014</a>
+                  </li>
+              </ol>
           </li>
           <li role="menuitem" class="path">
               <a class="meny" href="<?php echo get_bloginfo('wpurl') . "/conquest" ?>">Conquest</a>
+              <ol role="menu" class="menu-level-2">
+                  <li role="menuitem"><a href="<?php echo get_bloginfo('wpurl') . "/conquest/conquest-2014/" ?>">Conquest 2014</a>
+                  </li>
+              </ol>
           </li>
           <li role="menuitem" class="path">
               <a class="meny" href="<?php echo get_bloginfo('wpurl') . "/challenge" ?>">Challenge</a>
