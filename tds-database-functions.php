@@ -225,6 +225,19 @@ function get_tournaments_for_calendar() {
     return $result;
 }
 
+function get_tournaments_for_menu() {
+    global $wpdb, $tds_db_data_format;
+    $tournament_db_arrays = $wpdb->get_results(
+        "SELECT * FROM " . Tournament::table_name() .
+        " WHERE URL IS NOT NULL AND URL LIKE '/%' ORDER BY TO_DATE DESC", ARRAY_A);
+
+    $result = array();
+    foreach ($tournament_db_arrays as $db_array ) {
+        array_push($result, Tournament::from_db_array($db_array));
+    }
+    return $result;
+}
+
 function get_tournament_players($tournament_id) {
     global $wpdb;
     $resultset = $wpdb->get_results("SELECT * FROM " . Player::table_name() .

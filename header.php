@@ -32,30 +32,13 @@
             <a href="<?php bloginfo('wpurl') ?>" >Forsiden</a>
           </li>
           <li role="menuitem" class="path">
-              <a class="meny" href="<?php echo get_bloginfo('wpurl') . "/crusade" ?>">Crusade</a>
-              <ol role="menu" class="menu-level-2">
-                  <li role="menuitem"><a href="<?php echo get_bloginfo('wpurl') . "/crusade/crusade-2014/" ?>">Crusade 2014</a>
-                  </li>
-              </ol>
-          </li>
-          <li role="menuitem" class="path">
-              <a class="meny" href="<?php echo get_bloginfo('wpurl') . "/conquest" ?>">Conquest</a>
-              <ol role="menu" class="menu-level-2">
-                  <li role="menuitem"><a href="<?php echo get_bloginfo('wpurl') . "/conquest/conquest-2014/" ?>">Conquest 2014</a>
-                  </li>
-              </ol>
-          </li>
-          <li role="menuitem" class="path">
-              <a class="meny" href="<?php echo get_bloginfo('wpurl') . "/challenge" ?>">Challenge</a>
-          </li>
-          <li role="menuitem" class="path">
               <a href="<?php echo get_bloginfo('wpurl') . "/halloffame"?>">Hall of Fame</a>
           </li>
           <li role="menuitem" class="path">
-              <a href="<?php echo get_bloginfo('wpurl') . "/om-2d6-turneringer"?>">Om turneringer</a>
+              <a href="<?php echo get_bloginfo('wpurl') . "/om-2d6-turneringer"?>">2d6 turneringer</a>
               <ol role="menu" class="menu-level-2">
-                  <li role="menuitem"><a href="<?php echo get_bloginfo('wpurl') . "/om-2d6-turneringer/generell-turneringsinfo/" ?>">Generell turneringsinfo</a>
-                  </li>
+                  <li role="menuitem"><a href="<?php echo get_bloginfo('wpurl') . "/om-2d6-turneringer/generell-turneringsinfo/" ?>">Generell turneringsinfo</a></li>
+                  <?php display_turnering_menu_items() ?>
               </ol>
           </li>
           <li role="menuitem" class="path">
@@ -88,3 +71,12 @@
       <div class="mork">
 
     <hr/>
+
+<?php
+function display_turnering_menu_items() {
+    $tournaments = get_tournaments_for_menu();
+?>
+    <?php foreach ($tournaments as $tournament) { ?>
+      <li role="menuitem"><a href="<?php echo $tournament->getUrl() ?>"><?php echo $tournament->name ?></a></li>
+    <?php }
+} ?>
