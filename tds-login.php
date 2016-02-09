@@ -26,14 +26,6 @@ get_header(); ?>
 
 <div class="lys">
     <div class="tds-container">
-        <img class="" src="<?php bloginfo('template_directory'); ?>/img/forside/2d6-header.jpg">
-    </div>
-</div>
-
-<hr/>
-
-<div class="lys">
-    <div class="tds-container">
 	<div class="tds-padding-liten-full">
 	    <div class="tds-padding-stor">
 		<div class="morkere">
