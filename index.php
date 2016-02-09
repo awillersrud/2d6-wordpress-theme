@@ -9,7 +9,9 @@ $turnering = get_featured_tournament();
 	<img class="" src="<?php bloginfo('template_directory'); ?>/img/forside/2d6-header.jpg">
 	<span class="forside-om-tds-tekst">
 	  <h1>Spillforeningen 2d6</h1>
-	  <span>Spillforeningen 2d6 er en klubb for Warhammer Fantasy Battles spillere i Oslo. 2d6 ønsker å skape en solid ramme rundt Warhammer hobbyen, noe vi gjør gjennom å arrangere flere årlige turneringer og gjennom klubblokalet vårt i Oslo sentrum. Her på hjemmesiden vår finner du all relevant informasjon om 2d6 og om turneringene våre.</span>
+	  <span>Spillforeningen 2d6 er en klubb for Warmachine/Hordes- og Kings of War-spillere i Oslo. 2d6 ønsker å skape en
+	  solid ramme rundt disse figurspillene, noe vi gjør gjennom å arrangere flere årlige turneringer og gjennom klubblokalet
+	  vårt i Oslo sentrum. Her på hjemmesiden vår finner du all relevant informasjon om 2d6 og om turneringene våre.</span>
     </div>
 </div>
 
@@ -56,7 +58,9 @@ $turnering = get_featured_tournament();
 		 src="<?php bloginfo('template_directory'); ?>/img/forside/OmTurneringer_Heading.png"/>
 	    </a>
 
-	    <p>Hva er turnering, og hva er turneringsspill? Her finner dere alt dere trenger å vite om hva det vil si å delta på en 2d6 turnering. Det kan dreie seg om alt fra regler og malekrav, til forklaringer på en del vanlige begreper man støter på ved turneringer, m.mer. Nyttig både for veteraner og nye til turneringsspilling.</p>
+	    <p>Hva er turnering, og hva er turneringsspill? Her finner dere alt dere trenger å vite om hva det vil si å delta
+	    på en 2d6 turnering. Det kan dreie seg om alt fra regler og malekrav, til forklaringer på en del vanlige begreper
+	    man støter på ved turneringer, m.mer. Nyttig både for veteraner og nye til turneringsspilling.</p>
 
 	    <div class="mer-om-container">
 		<a href="om-2d6-turneringer" class="mer-om-link">Mer om turneringer »</a>
@@ -77,7 +81,8 @@ $turnering = get_featured_tournament();
 	</div>
 	</div>
 	<div class="tds-padding-liten">
-	<p>I 2d6 Hall of Fame finner du alle hærene som har vunnet «Best Army» på en av våre turneringer. Les mer om hvordan kåringene foregår, de forskjellige male- og base-teknikkene benyttet, forskjellige enheter og modeller i hærene og mye, mye mer!</p>
+	<p>I 2d6 Hall of Fame finner du alle hærene som har vunnet «Best Army» på en av våre turneringer. Les mer om hvordan
+	kåringene foregår, de forskjellige male- og base-teknikkene benyttet, forskjellige enheter og modeller i hærene og mye, mye mer!</p>
 	</div>
 
 	<?php display_hall_of_fame_posts(1, null, false, true); ?>
